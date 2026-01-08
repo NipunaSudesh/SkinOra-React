@@ -1,14 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import Button from "./Components/Theme/Botton";
+import TextInput from "./Components/Theme/TextInput";
+import TextArea from "./Components/Theme/Textarea";
+import Typography from "./Components/Theme/Typography";
 
 function App() {
   return (
-    <div className="App">
-    <div className="min-h-screen flex items-center justify-center bg-blue-100">
-      <h1 className="text-3xl font-bold text-blue-700">
-        Tailwind CSS is working!
-      </h1>
-    </div>
+    <div className="min-h-screen flex flex-col gap-4 items-center justify-center bg-blue-100 p-6">
+      
+      <Typography variant="H1">SkinOra</Typography>
+      <Typography >Tailwind common components test</Typography>
+
+      <TextInput placeholder="Enter your name" />
+      <TextArea placeholder="Enter description" />
+
+      <div className="flex gap-3">
+        <Button>Primary</Button>
+        <Button variant="secondary">Secondary</Button>
+        <Button variant="outline">Outline</Button>
+      </div>
+
     </div>
   );
 }
