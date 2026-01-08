@@ -15,3 +15,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+@layer components {
+  .container-card {
+    @apply bg-red-100 rounded-xl
+           w-full mx-auto
+           p-2
+           sm:p-4
+           md:p-6
+           lg:p-8
+           xl:p-10;
+  }
+}
+@layer components {
+  .page-wrapper {
+    @apply  mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-14;
+  }
+}
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
+}
