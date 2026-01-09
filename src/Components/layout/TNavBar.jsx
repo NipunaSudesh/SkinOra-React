@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import Logo from "../../assets/images/skinora-logo.png";
+import Logo from "../../assets/images/logo.png";
 import TextInput from "../../components/theme/TextInput";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import { FiSearch, FiMenu, FiX } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import Typography from "../../components/theme/Typography";
 
 const categories = [
   { label: "All Categories", path: "/categories" },
@@ -23,14 +24,25 @@ export default function TNavBar() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   return (
-    <header className="bg-[#fcf1e6] relative z-50">
+    <header className="fixed top-0 left-0 right-0 bg-[#fcf1e6] z-50">
       <div className="container-card">
-        <div className="flex items-center justify-between h-12 relative">
+        <div className="flex items-center justify-between h-[50px] relative">
 
-          {/* Logo */}
-          <Link to="/">
-            <img src={Logo} alt="Skinora Logo" className="h-20 w-auto" />
-          </Link>
+{/* Logo + Brand */}
+<Link to="/" className="flex items-center shrink-0">
+  <img
+    src={Logo}
+    alt="Skinora Logo"
+    className="h-10 w-auto"
+  />
+  <Typography
+    variant="h2"
+    className="text-lg sm:text-lg font-bold text-primary whitespace-nowrap"
+  >
+    Skin<span className="text-secondary">Ora</span>
+  </Typography>
+</Link>
+
 
           {/* Desktop Search */}
           <div className="hidden sm:flex flex-1 justify-center">
@@ -40,7 +52,7 @@ export default function TNavBar() {
                 placeholder="Search for products, brands and more"
                 className="w-full h-9 px-4 border border-gray-300 rounded-l-full focus:outline-none"
               />
-              <button className="bg-blue-500 text-white h-9 px-4 rounded-r-full hover:bg-secondary flex items-center justify-center">
+              <button className="bg-primary text-white h-9 px-4 rounded-r-full hover:bg-secondary flex items-center justify-center transition">
                 <FiSearch />
               </button>
             </div>
@@ -50,7 +62,7 @@ export default function TNavBar() {
           <div className="flex items-center gap-4">
             {/* Mobile Search */}
             <button
-              className="sm:hidden text-gray-700 text-lg"
+              className="sm:hidden text-gray-700 text-lg hover:text-secondary transition"
               onClick={() => {
                 setShowMobileSearch(!showMobileSearch);
                 setShowMobileMenu(false);
@@ -59,12 +71,12 @@ export default function TNavBar() {
               {showMobileSearch ? <FiX /> : <FiSearch />}
             </button>
 
-            <FaShoppingCart className="text-gray-700 hover:text-secondary cursor-pointer text-lg" />
-            <FaUser className="text-gray-700 hover:text-secondary cursor-pointer text-lg" />
+            <FaShoppingCart className="text-gray-700 hover:text-secondary cursor-pointer text-lg transition" />
+            <FaUser className="text-gray-700 hover:text-secondary cursor-pointer text-lg transition" />
 
             {/* Mobile Menu */}
             <button
-              className="lg:hidden text-gray-700 text-xl"
+              className="lg:hidden text-gray-700 text-xl hover:text-secondary transition"
               onClick={() => {
                 setShowMobileMenu(!showMobileMenu);
                 setShowMobileSearch(false);
@@ -85,7 +97,7 @@ export default function TNavBar() {
                     className="w-full h-9 px-4 border border-gray-300 rounded-l-full focus:outline-none"
                     autoFocus
                   />
-                  <button className="bg-blue-500 text-white h-9 px-4 rounded-r-full flex items-center justify-center">
+                  <button className="bg-blue-500 text-white h-9 px-4 rounded-r-full flex items-center justify-center hover:text-secondary ">
                     <FiSearch />
                   </button>
                 </div>
