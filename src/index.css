@@ -17,9 +17,10 @@ code {
 }
 @layer components {
   .container-card {
-    @apply rounded-xl
+    @apply 
+          
            w-full mx-auto
-           px-8
+           px-12
            sm:px-12
            lg:px-16
            xl:px-20
