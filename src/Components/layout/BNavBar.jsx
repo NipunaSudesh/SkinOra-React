@@ -16,7 +16,7 @@ const categories = [
 
 export default function BNavBar() {
   return (
-    <nav className="hidden lg:block fixed top-10 left-0 right-0 bg-primary border-t border-gray-200 z-40">
+    <nav className="hidden lg:block fixed top-12 left-0 right-0 bg-primary border-t border-gray-200 z-40">
       <div className="container-card py-3 mt-2">
         <div className="flex flex-wrap gap-x-6 gap-y-2 text-base justify-center items-center">
           {categories.map((item) => (
