@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { banner1, banner2, banner3, banner4 } from "../../assets/images";
+import { banner1, banner2, banner3, banner4,banner5 } from "../../assets/images";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
@@ -12,8 +12,9 @@ import "swiper/css/pagination";
 const banners = [
   { id: 1, img: banner1, alt: "Skinora Banner 1" },
   { id: 2, img: banner2, alt: "Skinora Banner 2" },
-  { id: 3, img: banner3, alt: "Skinora Banner 3" },
-  { id: 4, img: banner4, alt: "Skinora Banner 4" },
+    { id: 3, img: banner5, alt: "Skinora Banner 5" },
+  { id: 4, img: banner3, alt: "Skinora Banner 3" },
+  { id: 5, img: banner4, alt: "Skinora Banner 4" },
 ];
 
 export default function Banner() {
@@ -38,7 +39,7 @@ export default function Banner() {
             <img
               src={item.img}
               alt={item.alt}
-              className="w-full h-[140px] sm:h-[250px] md:h-[360px] lg:h-[400px] object-cover rounded-lg"
+              className="w-full h-[100px] sm:h-[200px] md:h-[240px] lg:h-[400px] object-cover rounded-lg "
             />
           </SwiperSlide>
         ))}
