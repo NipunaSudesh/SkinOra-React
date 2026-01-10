@@ -99,7 +99,7 @@ export default function Categories() {
         className="mt-8"
       >
         {categories.map((item) => (
-          <SwiperSlide key={item.id} className="flex justify-center">
+          <SwiperSlide key={item.id} className="flex justify-center ">
             <CategoryCard
               img={item.img}
               category={item.category}
