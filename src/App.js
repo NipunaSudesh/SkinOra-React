@@ -12,7 +12,9 @@ function App() {
         <Route element={<PublicLayout />}>
           <Route path="/" element={<Home />} />
         </Route>
-
+{/* <Routes>
+  <Route path="/category/:slug" element={<CategoryPage />} />
+</Routes> */}
 
       </Routes>
     </Router>

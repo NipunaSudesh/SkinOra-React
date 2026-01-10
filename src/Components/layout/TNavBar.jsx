@@ -24,7 +24,7 @@ export default function TNavBar() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-[#fcf1e6] z-50">
+    <header className="fixed top-0 left-0 right-0 bg-[#f2f2cd] z-50">
       <div className="container-card">
         <div className="flex items-center justify-between h-[60px] relative">
 

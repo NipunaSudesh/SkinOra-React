@@ -9,13 +9,41 @@ import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import "swiper/css";
 import "swiper/css/pagination";
 
+// const banners = [
+//   { id: 1, img: banner1, alt: "Skinora Banner 1" },
+//   { id: 2, img: banner2, alt: "Skinora Banner 2" },
+//     { id: 3, img: banner5, alt: "Skinora Banner 5" },
+//   { id: 4, img: banner3, alt: "Skinora Banner 3" },
+//   { id: 5, img: banner4, alt: "Skinora Banner 4" },
+// ];
 const banners = [
-  { id: 1, img: banner1, alt: "Skinora Banner 1" },
-  { id: 2, img: banner2, alt: "Skinora Banner 2" },
-    { id: 3, img: banner5, alt: "Skinora Banner 5" },
-  { id: 4, img: banner3, alt: "Skinora Banner 3" },
-  { id: 5, img: banner4, alt: "Skinora Banner 4" },
+  {
+    id: 1,
+    img: "https://res.cloudinary.com/dahofpwrr/image/upload/v1768030840/banner1_chrf63.webp",
+    alt: "Skinora Banner 1",
+  },
+  {
+    id: 2,
+    img: "https://res.cloudinary.com/dahofpwrr/image/upload/v1768030901/banner2_i8uzij.webp",
+    alt: "Skinora Banner 2",
+  },
+  {
+    id: 3,
+    img: "https://res.cloudinary.com/dahofpwrr/image/upload/v1768030899/banner5_rbr6wz.png",
+    alt: "Skinora Banner 5",
+  },
+  {
+    id: 4,
+    img: "https://res.cloudinary.com/dahofpwrr/image/upload/v1768030856/banner3_q1m4ce.webp",
+    alt: "Skinora Banner 3",
+  },
+  {
+    id: 5,
+    img: "https://res.cloudinary.com/dahofpwrr/image/upload/v1768030852/banner4_cvbmlo.webp",
+    alt: "Skinora Banner 4",
+  },
 ];
+
 
 export default function Banner() {
   const swiperRef = useRef(null);
