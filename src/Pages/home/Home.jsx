@@ -3,6 +3,8 @@ import Banner from "./Banner";
 import Features from './Features';
 import Categorys from './Categorys';
 import AboutSkinOra from './AboutSkinOra';
+import Products from './Products';
+import CustomerTestimonials from './CustomerTestimonials';
 
 export default function Home() {
   return (
@@ -11,7 +13,8 @@ export default function Home() {
       <Features />
       <Categorys />
       <AboutSkinOra />
-
+      <Products />
+      <CustomerTestimonials />
     </>
   );
 }

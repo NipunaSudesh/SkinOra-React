@@ -5,6 +5,7 @@ import { FaLeaf } from "react-icons/fa";
 import { GiReceiveMoney } from "react-icons/gi";
 import { RiCustomerService2Line } from "react-icons/ri";
 
+
 export default function Features() {
   return (
     <div className="container-card mt-10">
