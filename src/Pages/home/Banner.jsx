@@ -49,7 +49,7 @@ export default function Banner() {
   const swiperRef = useRef(null);
 
   return (
-    <div className="mt-20 lg:mt-32 relative">
+    <div className="relative">
       {/* Swiper */}
       <Swiper
         modules={[Autoplay, Pagination]}

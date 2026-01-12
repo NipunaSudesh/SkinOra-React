@@ -1,3 +1,4 @@
+import banner from "./banner.jpg";
 import banner1 from "./banner1.webp";
 import banner2 from "./banner2.webp";
 import banner3 from "./banner3.webp";
@@ -8,6 +9,7 @@ import logo from "./logo.png";
 
 
 export {
+  banner,
   banner1,
   banner2,
   banner3,
