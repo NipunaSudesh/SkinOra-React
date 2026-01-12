@@ -76,7 +76,7 @@ export default function ProductCard({
             {productName}
           </h4>
 
-          <p className="text-sm text-gray-500 line-clamp-2">
+          <p className="text-sm text-gray-500 line-clamp-2 min-h-[40px]">
             {productDesc}
           </p>
 
