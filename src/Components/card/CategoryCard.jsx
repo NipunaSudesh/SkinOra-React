@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function CategoryCard({ img, category, description, slug }) {
   return (
-    <Link to={`/category/${slug}`} className="group w-80">
+    <Link to={`/category/${slug}`} className="group w-72">
       <div className="relative flex flex-col items-center cursor-pointer">
 
         {/* Image Container */}
