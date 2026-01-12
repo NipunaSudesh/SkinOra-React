@@ -9,7 +9,7 @@ export default function PublicLayout() {
   return (
     <>
       <NavBar />
-      <main className="container-card">
+      <main className="container-card mt-20 md:mt-32">
         <Outlet />
       </main>
       <Footer />

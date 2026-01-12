@@ -72,7 +72,7 @@ export default function ProductCard({
 
         {/* Content */}
         <div className="flex flex-col gap-1 p-4">
-          <h4 className="font-semibold text-lg text-primary line-clamp-1">
+          <h4 className="font-semibold text-lg text-primary line-clamp-2">
             {productName}
           </h4>
 
