@@ -13,7 +13,7 @@ import Typography from "../theme/Typography";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#02004f] text-white pt-16 pb-8">
+    <footer className="bg-[#02004f] text-white pt-16 pb-8 mt-10">
       <div className="container-card">
 
         {/* MAIN GRID */}

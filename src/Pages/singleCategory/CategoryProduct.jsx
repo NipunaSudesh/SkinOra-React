@@ -46,9 +46,11 @@ export default function CategoryProduct() {
         Title={slug.replace("-", " ").toUpperCase()}
         discription="Premium Skincare And Beauty, Chosen Just For You"
       />
-
+<div className="flex text-start w-full">
+    <h2 className='text-gray-600 mx-8'>Showing <span className='text-secondary'>1-8</span> of <span className='text-secondary'>{products.length}</span> products</h2>
+</div>
       {/* Products */}
-      <div className="flex gap-4 mt-8 justify-center flex-wrap">
+      <div className="flex gap-4 mt-8 justify-center flex-wrap ">
         {currentProducts.length > 0 ? (
           currentProducts.map((product) => (
             <ProductCard
