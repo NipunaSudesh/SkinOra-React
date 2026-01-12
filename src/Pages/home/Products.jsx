@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { Header } from "../../components/theme/Header";
 import ProductCard from "../../components/card/ProductCard";
+import navigate, { useNavigate } from "react-router-dom";
 
 const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
 
 export default function Products() {
+  const navigate =useNavigate();
   const [products, setProducts] = useState([]);
+
+  const handleAllProductsClick =()=>{
+    navigate('/all-products');
+  }
 
   const fetchProducts = async () => {
     try {
       const res = await fetch(`${SKINORA_API_URL}/api/getproducts`);
       const data = await res.json();
 
-      // ✅ API RETURNS ARRAY DIRECTLY
+      // API RETURNS ARRAY DIRECTLY
       setProducts(Array.isArray(data) ? data : []);
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -46,7 +52,9 @@ export default function Products() {
         ))}
       </div>
       <div className="mt-6 flex items-center justify-center">
-      <button className="bg-primary text-white hover:bg-secondary mx-auto block px-5 py-2 rounded-lg font-semibold transition duration-200">View All Products</button>
+      <button className="bg-primary text-white hover:bg-secondary mx-auto block px-5 py-2 rounded-lg font-semibold transition duration-200"
+      onClick={handleAllProductsClick}
+      >View All Products</button>
 </div>
     </div>
   );

@@ -35,7 +35,7 @@ const testimonials = [
 
 export default function CustomerTestimonials() {
   return (
-     <section className="mt-10 bg-gray-200 py-4 rounded-2xl">
+     <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen mt-10 py-4 rounded-2xl bg-gray-200 ">
       <div className="container-card">
 
 <Header

@@ -24,7 +24,7 @@ useEffect (()=>{
 },[]);
 
   return (
-    <div className='flex flex-col item-center justify-center gap-4 mt-20 card-container px-4'>
+    <div className='flex flex-col item-center justify-center gap-4 card-container px-4'>
       <div>
               <Header
                 Title="Shop by Categories"
