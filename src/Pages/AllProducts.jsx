@@ -4,7 +4,8 @@ import { banner } from "../assets/images";
 import { Header } from "../components/theme/Header";
 import ProductCard from "../components/card/ProductCard";
 import ProductFilter from "./singleCategory/ProductFilter";
-import MobileFilterBar from "./singleCategory/MobileFilterBar";
+import MobileFilterBar from "./singleCategory/MobileFilterDrawer";
+import MobileFilterDrawer from "./singleCategory/MobileFilterDrawer";
 
 const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
 const PRODUCTS_PER_PAGE = 8;
@@ -12,7 +13,7 @@ const PRODUCTS_PER_PAGE = 8;
 export default function AllProducts() {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-
+  const [openFilter, setOpenFilter] = useState(false);
   const [filters, setFilters] = useState({
     category: "",
     brands: [],
@@ -117,6 +118,22 @@ export default function AllProducts() {
             Title="All Products"
             discription="Shop our full range of trusted skincare, haircare, baby care, and wellness products."
           />
+      <div className="lg:hidden flex justify-center px-3 mb-3 w-full">
+          <button
+            onClick={() => setOpenFilter(true)}
+            className="px-4 py-2 border rounded-lg text-sm bg-primary hover:bg-secondary text-white font-medium w-full"
+          >
+            Filters
+          </button>
+        </div>
+
+        {/* MOBILE FILTER DRAWER */}
+        <MobileFilterDrawer
+          isOpen={openFilter}
+          onClose={() => setOpenFilter(false)}
+          filters={filters}
+          setFilters={setFilters}
+        />
 
           <p className="text-gray-600 mx-2">
             Showing{" "}
@@ -131,7 +148,7 @@ export default function AllProducts() {
             products
           </p>
     {/* Mobile horizontal filter */}
-    <MobileFilterBar filters={filters} setFilters={setFilters} />
+    {/* <MobileFilterBar filters={filters} setFilters={setFilters} /> */}
           <div className="flex flex-wrap justify-center mt-6 gap-2">
             {currentProducts.length > 0 ? (
               currentProducts.map((product) => (

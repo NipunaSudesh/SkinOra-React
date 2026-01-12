@@ -1,118 +1,179 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import ProductCard from "../../components/card/ProductCard";
 import { Header } from "../../components/theme/Header";
+import ProductFilter from "../singleCategory/ProductFilter";
+import MobileFilterDrawer from "../singleCategory/MobileFilterDrawer";
 
 const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
 const PRODUCTS_PER_PAGE = 8;
 
 export default function CategoryProduct() {
-  const [products, setProducts] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
   const { slug } = useParams();
 
+  const [products, setProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [openFilter, setOpenFilter] = useState(false);
+
+  const [filters, setFilters] = useState({
+    brands: [],
+    inStock: false,
+    minPrice: "",
+    maxPrice: "",
+  });
+
+  /* FETCH PRODUCTS */
   useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch(`${SKINORA_API_URL}/api/getproducts`);
+        const data = await res.json();
+
+        if (Array.isArray(data)) {
+          setProducts(data.filter((p) => p.categorySlug === slug));
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
     fetchProducts();
-    setCurrentPage(1); // reset page when category changes
+    setCurrentPage(1);
   }, [slug]);
 
-  const fetchProducts = async () => {
-    try {
-      const res = await fetch(`${SKINORA_API_URL}/api/getproducts`);
-      const data = await res.json();
+  /* FILTER LOGIC */
+  const filteredProducts = useMemo(() => {
+    return products.filter((p) => {
+      if (filters.brands.length && !filters.brands.includes(p.brand))
+        return false;
 
-      if (Array.isArray(data)) {
-        const filtered = data.filter(
-          (product) => product.categorySlug === slug
-        );
-        setProducts(filtered);
-      }
-    } catch (error) {
-      console.error("Error fetching products:", error);
-    }
-  };
+      if (filters.inStock && p.stockStatus !== "IN_STOCK")
+        return false;
 
-  // 🔹 Pagination calculations
-  const totalPages = Math.ceil(products.length / PRODUCTS_PER_PAGE);
+      if (filters.minPrice && p.price < Number(filters.minPrice))
+        return false;
+
+      if (filters.maxPrice && p.price > Number(filters.maxPrice))
+        return false;
+
+      return true;
+    });
+  }, [products, filters]);
+
+  /* PAGINATION */
+  const totalPages = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE);
   const startIndex = (currentPage - 1) * PRODUCTS_PER_PAGE;
-  const currentProducts = products.slice(
+  const currentProducts = filteredProducts.slice(
     startIndex,
     startIndex + PRODUCTS_PER_PAGE
   );
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [filters]);
+
   return (
-    <div className="mt-10 flex flex-col items-center">
-      <Header
-        Title={slug.replace("-", " ").toUpperCase()}
-        discription="Premium Skincare And Beauty, Chosen Just For You"
-      />
-<div className="flex text-start w-full">
-    <h2 className='text-gray-600 mx-8'>Showing <span className='text-secondary'>1-8</span> of <span className='text-secondary'>{products.length}</span> products</h2>
-</div>
-      {/* Products */}
-      <div className="flex gap-4 mt-8 justify-center flex-wrap ">
-        {currentProducts.length > 0 ? (
-          currentProducts.map((product) => (
-            <ProductCard
-              key={product.slug}
-              id={product.slug}
-              imgUrl={product.imageUrl}
-              productName={product.name}
-              productDesc={product.shortDescription}
-              rating={product.rating}
-              OPrice={product.oldPrice}
-              NPrice={product.price}
-              reviewCount={product.reviewCount}
-            />
-          ))
-        ) : (
-          <p className="text-gray-500 mt-6">No products found</p>
-        )}
+    <section className="my-10 flex gap-6">
+      {/* DESKTOP FILTER */}
+      <div className="hidden lg:block w-1/5">
+        <ProductFilter filters={filters} setFilters={setFilters} hideCategory />
       </div>
 
-      {/* Pagination */}
-      {totalPages > 1 && (
-        <div className="flex items-center gap-2 mt-10">
-          {/* Previous */}
-          <button
-            onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-            disabled={currentPage === 1}
-            className="px-4 py-2 border rounded-md text-sm disabled:opacity-40  text-white bg-primary hover:bg-secondary"
-          >
-            Previous
-          </button>
+      {/* PRODUCTS */}
+      <div className="w-full lg:w-4/5">
+        <Header
+          Title={slug.replace("-", " ").toUpperCase()}
+          discription="Premium Skincare And Beauty, Chosen Just For You"
+        />
 
-          {/* Page numbers */}
-          {[...Array(totalPages)].map((_, index) => {
-            const page = index + 1;
-            return (
-              <button
-                key={page}
-                onClick={() => setCurrentPage(page)}
-                className={`w-10 h-10 rounded-full border text-sm font-medium
-                  ${
-                    currentPage === page
-                      ? "bg-yellow-400 text-black"
-                      : "bg-white text-black"
-                  }`}
-              >
-                {page}
-              </button>
-            );
-          })}
-
-          {/* Next */}
+        {/* MOBILE FILTER BUTTON */}
+        <div className="lg:hidden flex justify-center px-3 mb-3 w-full">
           <button
-            onClick={() =>
-              setCurrentPage((p) => Math.min(p + 1, totalPages))
-            }
-            disabled={currentPage === totalPages}
-            className="px-4 py-2 border rounded-md text-sm disabled:opacity-40 text-white bg-primary hover:bg-secondary"
+            onClick={() => setOpenFilter(true)}
+            className="px-4 py-2 border rounded-lg text-sm bg-primary hover:bg-secondary text-white font-medium w-full"
           >
-            Next
+            Filters
           </button>
         </div>
-      )}
-    </div>
+
+        {/* MOBILE FILTER DRAWER */}
+        <MobileFilterDrawer
+          isOpen={openFilter}
+          onClose={() => setOpenFilter(false)}
+          filters={filters}
+          setFilters={setFilters}
+        />
+
+        {/* COUNT */}
+        <p className="text-gray-600 mx-2">
+          Showing{" "}
+          <span className="text-secondary">
+            {startIndex + 1}–
+            {Math.min(startIndex + PRODUCTS_PER_PAGE, filteredProducts.length)}
+          </span>{" "}
+          of{" "}
+          <span className="text-secondary">
+            {filteredProducts.length}
+          </span>{" "}
+          products
+        </p>
+
+        {/* PRODUCTS GRID */}
+        <div className="flex flex-wrap justify-center mt-6 gap-2">
+          {currentProducts.length ? (
+            currentProducts.map((product) => (
+              <ProductCard
+                key={product.slug}
+                id={product.slug}
+                imgUrl={product.imageUrl}
+                productName={product.name}
+                productDesc={product.shortDescription}
+                rating={product.rating}
+                OPrice={product.oldPrice}
+                NPrice={product.price}
+                reviewCount={product.reviewCount}
+              />
+            ))
+          ) : (
+            <p className="text-gray-500 mt-10">No products found</p>
+          )}
+        </div>
+
+        {/* PAGINATION */}
+        {totalPages > 1 && (
+          <div className="flex justify-center gap-2 mt-10">
+            <button
+              disabled={currentPage === 1}
+              onClick={() => setCurrentPage((p) => p - 1)}
+              className="px-4 py-2 bg-primary text-white rounded disabled:opacity-40"
+            >
+              Previous
+            </button>
+
+            {[...Array(totalPages)].map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentPage(i + 1)}
+                className={`w-10 h-10 rounded-full border ${
+                  currentPage === i + 1
+                    ? "bg-secondary text-white"
+                    : "bg-white"
+                }`}
+              >
+                {i + 1}
+              </button>
+            ))}
+
+            <button
+              disabled={currentPage === totalPages}
+              onClick={() => setCurrentPage((p) => p + 1)}
+              className="px-4 py-2 bg-primary text-white rounded disabled:opacity-40"
+            >
+              Next
+            </button>
+          </div>
+        )}
+      </div>
+    </section>
   );
 }
