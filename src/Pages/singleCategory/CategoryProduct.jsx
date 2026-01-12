@@ -102,6 +102,7 @@ export default function CategoryProduct() {
           onClose={() => setOpenFilter(false)}
           filters={filters}
           setFilters={setFilters}
+          hideCategory
         />
 
         {/* COUNT */}
