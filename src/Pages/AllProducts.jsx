@@ -42,7 +42,7 @@ export default function AllProducts() {
     return products.filter((p) => {
       // Category
       if (filters.category && p.categorySlug !== filters.category) return false;
-
+   if (filters.country && p.country !== filters.country) return false;
       // Brands (multi-select)
       if (
         filters.brands.length > 0 &&
@@ -149,12 +149,13 @@ export default function AllProducts() {
           </p>
     {/* Mobile horizontal filter */}
     {/* <MobileFilterBar filters={filters} setFilters={setFilters} /> */}
-          <div className="flex flex-wrap justify-center mt-6 gap-2">
+          <div className="flex flex-wrap justify-center mt-6 gap-4">
             {currentProducts.length > 0 ? (
               currentProducts.map((product) => (
                 <ProductCard
                   key={product.slug}
                   id={product.slug}
+                   slug={product.slug}
                   imgUrl={product.imageUrl}
                   productName={product.name}
                   productDesc={product.shortDescription}

@@ -4,6 +4,7 @@ import Home from "./Pages/home/Home";
 import AllCategories from "./Pages/AllCategories";
 import CategoryPage from "./Pages/singleCategory/CategoryPage";
 import AllProducts from "./Pages/AllProducts";
+import SingleProductPage from "./Pages/singleProduct/SingleProduct";
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
         </Route>
         <Route element={<PublicLayout />}>
           <Route path="/product-category/:slug" element={<CategoryPage />} />
+        </Route>
+        <Route element={<PublicLayout />}>
+          <Route path="/product/:slug" element={<SingleProductPage />} />
         </Route>
 
       </Routes>

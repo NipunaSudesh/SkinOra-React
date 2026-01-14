@@ -15,7 +15,7 @@ export default function Products() {
 
   const fetchProducts = async () => {
     try {
-      const res = await fetch(`${SKINORA_API_URL}/api/getproducts`);
+      const res = await fetch(`${SKINORA_API_URL}/api/getcatalogs`);
       const data = await res.json();
 
       // API RETURNS ARRAY DIRECTLY
@@ -37,10 +37,11 @@ export default function Products() {
       />
 
       <div className="flex gap-2 mt-8 justify-center flex-wrap">
-        {products.slice(0, 10).map((product) => (
+        {products.slice(0, 16).map((product) => (
           <ProductCard
             key={product._id}
             id={product._id}
+            slug={product.slug}
             imgUrl={product.imageUrl}
             productName={product.name}
             productDesc={product.shortDescription}

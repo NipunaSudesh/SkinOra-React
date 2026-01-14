@@ -17,6 +17,7 @@ export default function CategoryProduct() {
 
   const [filters, setFilters] = useState({
     brands: [],
+    country: "",
     inStock: false,
     minPrice: "",
     maxPrice: "",
@@ -46,6 +47,9 @@ export default function CategoryProduct() {
     return products.filter((p) => {
       if (filters.brands.length && !filters.brands.includes(p.brand))
         return false;
+    // Country
+    if (filters.country && p.country !== filters.country)
+      return false;
 
       if (filters.inStock && p.stockStatus !== "IN_STOCK")
         return false;
@@ -126,6 +130,7 @@ export default function CategoryProduct() {
               <ProductCard
                 key={product.slug}
                 id={product.slug}
+                 slug={product.slug}
                 imgUrl={product.imageUrl}
                 productName={product.name}
                 productDesc={product.shortDescription}

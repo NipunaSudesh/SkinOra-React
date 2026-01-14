@@ -7,6 +7,7 @@ import { FaShoppingCart } from "react-icons/fa";
 
 export default function ProductCard({
   id,
+  slug,
   OPrice,
   NPrice,
   imgUrl,
@@ -29,8 +30,8 @@ export default function ProductCard({
   };
 
   return (
-    <Link to={`/product/${id}`} className="group w-64">
-      <div className="relative flex flex-col bg-white rounded-xl shadow-md 
+    <Link to={`/product/${slug}`} className="group w-64">
+      <div className="relative flex flex-col bg-white rounded-xl shadow-md border border-gray-300
                       hover:shadow-2xl transition-all duration-300">
 
         {/* Image */}
@@ -72,7 +73,7 @@ export default function ProductCard({
 
         {/* Content */}
         <div className="flex flex-col gap-1 p-4">
-          <h4 className="font-semibold text-lg text-primary line-clamp-2">
+          <h4 className="font-semibold text-lg text-primary line-clamp-2 min-h-[60px]">
             {productName}
           </h4>
 
