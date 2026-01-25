@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { CiStar } from "react-icons/ci";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Truck, ShieldCheck } from "lucide-react";
 import Typography from "../../components/theme/Typography";
-import ProductCard from "../../components/card/ProductCard";
+import ProductCart from "../../components/cart/ProductCart";
 import { Header } from "../../components/theme/Header";
 
 const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
 
 export default function SingleProduct() {
   const { slug } = useParams();
-
+const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [products, setProducts] = useState([]);
   const [qty, setQty] = useState(1);
@@ -63,6 +63,12 @@ export default function SingleProduct() {
     return <p className="text-center mt-10">Loading...</p>;
   }
 
+const handleCart = () => {
+  navigate("/cart");
+};
+const HandleCheckOut = () => {
+  navigate("/checkout");
+};
 
   return (
     <>
@@ -150,11 +156,11 @@ export default function SingleProduct() {
                   <button onClick={() => setQty(qty + 1)}>+</button>
                 </div>
 
-                <button className="flex-1 rounded-full border px-6 py-3">
+                <button className="flex-1 rounded-full border px-6 py-3" onClick={handleCart}>
                   Add to cart
                 </button>
 
-                <button className="flex-1 rounded-full bg-[#02004f] px-6 py-3 text-white">
+                <button className="flex-1 rounded-full bg-[#02004f] px-6 py-3 text-white" onClick={HandleCheckOut}>
                   Buy now
                 </button>
               </div>
@@ -220,7 +226,7 @@ export default function SingleProduct() {
 
         <div className="flex gap-4 mt-8 justify-center flex-wrap">
           {products.slice(0, 10).map((item) => (
-            <ProductCard
+            <ProductCart
               key={item._id}
               slug={item.slug}
               imgUrl={item.imageUrl}

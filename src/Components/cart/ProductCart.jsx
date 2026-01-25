@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { FaShare } from "react-icons/fa6";
 import { CiStar } from "react-icons/ci";
 import { FaShoppingCart } from "react-icons/fa";
 
-export default function ProductCard({
+export default function ProductCart({
   id,
   slug,
   OPrice,
@@ -17,6 +17,7 @@ export default function ProductCard({
   reviewCount = 0,
 }) {
   const [liked, setLiked] = useState(false);
+  const navigate =useNavigate();
 
   const handleLike = (e) => {
     e.preventDefault();
@@ -28,7 +29,11 @@ export default function ProductCard({
     e.preventDefault();
     e.stopPropagation();
   };
-
+const handleCart = (e) => {
+    e.preventDefault();    
+  e.stopPropagation(); 
+  navigate("/cart");
+};
   return (
     <Link to={`/product/slug/${slug}`} className="group w-64">
       <div className="relative flex flex-col bg-white rounded-xl shadow-md border border-gray-300
@@ -106,7 +111,7 @@ export default function ProductCard({
           </div>
 
           {/* Button */}
-          <button
+          <button onClick={handleCart}
             className="mt-4 flex items-center justify-center gap-2
                        bg-secondary hover:bg-primary
                        text-white py-2 rounded-lg

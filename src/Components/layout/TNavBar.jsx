@@ -3,7 +3,7 @@ import {logo} from "../../assets/images";
 import TextInput from "../../components/theme/TextInput";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import { FiSearch, FiMenu, FiX } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
 import Typography from "../../components/theme/Typography";
 
 const categories = [
@@ -22,7 +22,14 @@ const categories = [
 export default function TNavBar() {
   const [showMobileSearch, setShowMobileSearch] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+const navigate =useNavigate();
+  const handleCart = () => {
+  navigate("/cart");
+};
 
+  const handleUser = () => {
+  navigate("/login");
+};
   return (
     <header className="fixed top-0 left-0 right-0 bg-[#f2f2cd] z-50">
       <div className="container-card">
@@ -71,8 +78,8 @@ export default function TNavBar() {
               {showMobileSearch ? <FiX /> : <FiSearch />}
             </button>
 
-            <FaShoppingCart className="text-gray-700 hover:text-secondary cursor-pointer text-lg transition" />
-            <FaUser className="text-gray-700 hover:text-secondary cursor-pointer text-lg transition" />
+            <FaShoppingCart onClick={handleCart} className="text-gray-700 hover:text-secondary cursor-pointer text-lg transition" />
+            <FaUser onClick={handleUser} className="text-gray-700 hover:text-secondary cursor-pointer text-lg transition" />
 
             {/* Mobile Menu */}
             <button

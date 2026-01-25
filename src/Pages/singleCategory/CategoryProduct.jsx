@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-import ProductCard from "../../components/card/ProductCard";
+import ProductCart from "../../components/cart/ProductCart";
 import { Header } from "../../components/theme/Header";
 import ProductFilter from "../singleCategory/ProductFilter";
 import MobileFilterDrawer from "../singleCategory/MobileFilterDrawer";
@@ -127,7 +127,7 @@ export default function CategoryProduct() {
         <div className="flex flex-wrap justify-center mt-6 gap-2">
           {currentProducts.length ? (
             currentProducts.map((product) => (
-              <ProductCard
+              <ProductCart
                 key={product.slug}
                 id={product.slug}
                  slug={product.slug}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Header } from "../../components/theme/Header";
-import ProductCard from "../../components/card/ProductCard";
+import ProductCart from "../../components/cart/ProductCart";
 import navigate, { useNavigate } from "react-router-dom";
 
 const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
@@ -39,7 +39,7 @@ export default function Products() {
 
       <div className="flex gap-2 mt-8 justify-center flex-wrap">
         {products.slice(0, 15).map((product) => (
-          <ProductCard
+          <ProductCart
             key={product._id}
             id={product._id}
             slug={product.slug}

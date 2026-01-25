@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import Features from "../Pages/home/Features";
 import { banner } from "../assets/images";
 import { Header } from "../components/theme/Header";
-import ProductCard from "../components/card/ProductCard";
+import ProductCart from "../components/cart/ProductCart";
 import ProductFilter from "./singleCategory/ProductFilter";
 import MobileFilterBar from "./singleCategory/MobileFilterDrawer";
 import MobileFilterDrawer from "./singleCategory/MobileFilterDrawer";
@@ -152,7 +152,7 @@ export default function AllProducts() {
           <div className="flex flex-wrap justify-center mt-6 gap-4">
             {currentProducts.length > 0 ? (
               currentProducts.map((product) => (
-                <ProductCard
+                <ProductCart
                   key={product.slug}
                   id={product.slug}
                    slug={product.slug}
