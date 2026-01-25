@@ -6,6 +6,7 @@ import AllCategories from "./Pages/AllCategories";
 import CategoryPage from "./Pages/singleCategory/CategoryPage";
 import AllProducts from "./Pages/AllProducts";
 import SingleProductPage from "./Pages/singleProduct/SingleProduct";
+import AddToCart from "./Pages/AddToCart";
 
 function App() {
   return (
@@ -28,6 +29,12 @@ function App() {
         </Route>
         <Route element={<PublicLayout />}>
           <Route path="/product/slug/:slug" element={<SingleProductPage />} />
+        </Route>
+        <Route element={<PublicLayout />}>
+          <Route path="/cart" element={<AddToCart />} />
+        </Route>
+        <Route element={<PublicLayout />}>
+          <Route path="/checkout" element={<AddToCart />} />
         </Route>
 
       </Routes>
