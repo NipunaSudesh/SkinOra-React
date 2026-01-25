@@ -52,7 +52,7 @@ export default function Features() {
           <GiReceiveMoney className="w-10 h-10 text-primary" />
           <div>
             <h3 className="font-semibold text-gray-800">Easy Payments</h3>
-            <p className="text-sm text-gray-500">Cash on delivery & cards</p>
+            <p className="text-sm text-gray-500">Cash on delivery & carts</p>
           </div>
         </div>
 

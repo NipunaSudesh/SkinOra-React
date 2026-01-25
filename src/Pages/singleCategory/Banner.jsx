@@ -11,7 +11,7 @@ export default function Banner() {
   useEffect(() => {
     const fetchCategory = async () => {
       try {
-        const res = await fetch(`${SKINORA_API_URL}/api/getcategories`);
+        const res = await fetch(`${SKINORA_API_URL}/api/categories`);
         const data = await res.json();
 
         if (Array.isArray(data)) {

@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-import ProductCard from "../../components/card/ProductCard";
+import ProductCart from "../../components/cart/ProductCart";
 import { Header } from "../../components/theme/Header";
 import ProductFilter from "../singleCategory/ProductFilter";
 import MobileFilterDrawer from "../singleCategory/MobileFilterDrawer";
@@ -17,6 +17,7 @@ export default function CategoryProduct() {
 
   const [filters, setFilters] = useState({
     brands: [],
+    country: "",
     inStock: false,
     minPrice: "",
     maxPrice: "",
@@ -26,7 +27,7 @@ export default function CategoryProduct() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch(`${SKINORA_API_URL}/api/getproducts`);
+        const res = await fetch(`${SKINORA_API_URL}/api/products`);
         const data = await res.json();
 
         if (Array.isArray(data)) {
@@ -46,6 +47,9 @@ export default function CategoryProduct() {
     return products.filter((p) => {
       if (filters.brands.length && !filters.brands.includes(p.brand))
         return false;
+    // Country
+    if (filters.country && p.country !== filters.country)
+      return false;
 
       if (filters.inStock && p.stockStatus !== "IN_STOCK")
         return false;
@@ -123,9 +127,10 @@ export default function CategoryProduct() {
         <div className="flex flex-wrap justify-center mt-6 gap-2">
           {currentProducts.length ? (
             currentProducts.map((product) => (
-              <ProductCard
+              <ProductCart
                 key={product.slug}
                 id={product.slug}
+                 slug={product.slug}
                 imgUrl={product.imageUrl}
                 productName={product.name}
                 productDesc={product.shortDescription}

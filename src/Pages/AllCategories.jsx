@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Header } from '../components/theme/Header';
-import CategoryCard from "../components/card/CategoryCard";
+import CategoryCart from "../components/cart/CategoryCart";
 const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
 
 export default function AllCategories() {
@@ -8,7 +8,7 @@ export default function AllCategories() {
 
   const fetchCategories =async () =>{
     try {
-      const res =await fetch(`${SKINORA_API_URL}/api/getcategories`);
+      const res =await fetch(`${SKINORA_API_URL}/api/categories`);
       if(!res.ok){
         throw new Error(`HTTP error! Status: ${res.status}`);
       }
@@ -34,7 +34,7 @@ useEffect (()=>{
       <div className='flex flex-wrap justify-center items-center gap-4 w-full '>
       {/* <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full '> */}
         {categories.map((category) => (
-          <CategoryCard key={category.id}
+          <CategoryCart key={category.id}
            category={category.categoriesName}
             description={category.description}
            img={category.imageUrl}

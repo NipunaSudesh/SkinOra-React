@@ -5,7 +5,7 @@ import { Autoplay } from "swiper/modules";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import "swiper/css";
 import { useNavigate } from "react-router-dom";
-import CategoryCard from "../../components/card/CategoryCard";
+import CategoryCart from "../../components/cart/CategoryCart";
 const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
 
 
@@ -15,7 +15,7 @@ export default function Categories() {
   const navigate = useNavigate();
 const fetchCategories = async () => {
   try {
-const res = await fetch(`${SKINORA_API_URL}/api/getcategories`);
+const res = await fetch(`${SKINORA_API_URL}/api/categories`);
     // const res = await fetch("http://localhost:5000/api/getcategories");
 
     if (!res.ok) {
@@ -62,7 +62,7 @@ const res = await fetch(`${SKINORA_API_URL}/api/getcategories`);
       >
         {categories.map((item) => (
           <SwiperSlide key={item.id} className="flex justify-center ">
-            <CategoryCard
+            <CategoryCart
               img={item.imageUrl}
               category={item.categoriesName}
               description={item.description}

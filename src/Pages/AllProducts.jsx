@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import Features from "../Pages/home/Features";
 import { banner } from "../assets/images";
 import { Header } from "../components/theme/Header";
-import ProductCard from "../components/card/ProductCard";
+import ProductCart from "../components/cart/ProductCart";
 import ProductFilter from "./singleCategory/ProductFilter";
 import MobileFilterBar from "./singleCategory/MobileFilterDrawer";
 import MobileFilterDrawer from "./singleCategory/MobileFilterDrawer";
@@ -26,7 +26,7 @@ export default function AllProducts() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch(`${SKINORA_API_URL}/api/getproducts`);
+        const res = await fetch(`${SKINORA_API_URL}/api/products`);
         const data = await res.json();
         setProducts(Array.isArray(data) ? data : []);
       } catch (error) {
@@ -42,7 +42,7 @@ export default function AllProducts() {
     return products.filter((p) => {
       // Category
       if (filters.category && p.categorySlug !== filters.category) return false;
-
+   if (filters.country && p.country !== filters.country) return false;
       // Brands (multi-select)
       if (
         filters.brands.length > 0 &&
@@ -149,12 +149,13 @@ export default function AllProducts() {
           </p>
     {/* Mobile horizontal filter */}
     {/* <MobileFilterBar filters={filters} setFilters={setFilters} /> */}
-          <div className="flex flex-wrap justify-center mt-6 gap-2">
+          <div className="flex flex-wrap justify-center mt-6 gap-4">
             {currentProducts.length > 0 ? (
               currentProducts.map((product) => (
-                <ProductCard
+                <ProductCart
                   key={product.slug}
                   id={product.slug}
+                   slug={product.slug}
                   imgUrl={product.imageUrl}
                   productName={product.name}
                   productDesc={product.shortDescription}

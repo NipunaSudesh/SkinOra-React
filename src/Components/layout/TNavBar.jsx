@@ -3,26 +3,33 @@ import {logo} from "../../assets/images";
 import TextInput from "../../components/theme/TextInput";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import { FiSearch, FiMenu, FiX } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
 import Typography from "../../components/theme/Typography";
 
 const categories = [
-  { label: "All Categories", path: "/categories" },
-  { label: "Baby Products", path: "/baby-products" },
-  { label: "Body Care", path: "/body-care" },
-  { label: "Face Care", path: "/face-care" },
-  { label: "Hair Care", path: "/hair-care" },
-  { label: "Sunscreens", path: "/sunscreens" },
-  { label: "Toiletries", path: "/toiletries" },
-  { label: "Wellness Bundles", path: "/wellness-bundles" },
-  { label: "About Us", path: "/about" },
-  { label: "Contact Us", path: "/contact" },
+  { label: "All Products", slug: "all-products" },
+  { label: "Baby Care", slug: "product-category/baby-care" },
+  { label: "Body Care", slug: "product-category/body-care" },
+  { label: "Face Care", slug: "product-category/face-care" },
+  { label: "Hair Care", slug: "product-category/hair-care" },
+  { label: "Sunscreens", slug: "product-category/sunscreens" },
+  { label: "Serums", slug: "product-category/serums" },
+  { label: "Mens Grooming", slug: "product-category/mens-grooming" },
+  { label: "About Us", slug: "/about" },
+  { label: "Contact Us", slug: "/contact" },
 ];
 
 export default function TNavBar() {
   const [showMobileSearch, setShowMobileSearch] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+const navigate =useNavigate();
+  const handleCart = () => {
+  navigate("/cart");
+};
 
+  const handleUser = () => {
+  navigate("/login");
+};
   return (
     <header className="fixed top-0 left-0 right-0 bg-[#f2f2cd] z-50">
       <div className="container-card">
@@ -71,8 +78,8 @@ export default function TNavBar() {
               {showMobileSearch ? <FiX /> : <FiSearch />}
             </button>
 
-            <FaShoppingCart className="text-gray-700 hover:text-secondary cursor-pointer text-lg transition" />
-            <FaUser className="text-gray-700 hover:text-secondary cursor-pointer text-lg transition" />
+            <FaShoppingCart onClick={handleCart} className="text-gray-700 hover:text-secondary cursor-pointer text-lg transition" />
+            <FaUser onClick={handleUser} className="text-gray-700 hover:text-secondary cursor-pointer text-lg transition" />
 
             {/* Mobile Menu */}
             <button

@@ -2,16 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const categories = [
-  { label: "All Categories", path: "/categories" },
-  { label: "Baby Products", path: "/baby-products" },
-  { label: "Body Care", path: "/body-care" },
-  { label: "Face Care", path: "/face-care" },
-  { label: "Hair Care", path: "/hair-care" },
-  { label: "Sunscreens", path: "/sunscreens" },
-  { label: "Toiletries", path: "/toiletries" },
-  { label: "Wellness Bundles", path: "/wellness-bundles" },
-  { label: "About Us", path: "/about" },
-  { label: "Contact Us", path: "/contact" },
+    { label: "All Products", slug: "all-products" },
+  { label: "Baby Care", slug: "product-category/baby-care" },
+  { label: "Body Care", slug: "product-category/body-care" },
+  { label: "Face Care", slug: "product-category/face-care" },
+  { label: "Hair Care", slug: "product-category/hair-care" },
+  { label: "Sunscreens", slug: "product-category/sunscreens" },
+  { label: "Serums", slug: "product-category/serums" },
+  { label: "Mens Grooming", slug: "product-category/mens-grooming" },
+  { label: "About Us", slug: "/about" },
+  { label: "Contact Us", slug: "/contact" },
 ];
 
 export default function BNavBar() {
@@ -22,7 +22,7 @@ export default function BNavBar() {
           {categories.map((item) => (
             <Link
               key={item.label}
-              to={item.path}
+              to={item.slug}
               className="text-white hover:text-secondary transition"
             >
               {item.label}

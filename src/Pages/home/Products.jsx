@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Header } from "../../components/theme/Header";
-import ProductCard from "../../components/card/ProductCard";
+import ProductCart from "../../components/cart/ProductCart";
 import navigate, { useNavigate } from "react-router-dom";
 
 const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
@@ -15,7 +15,8 @@ export default function Products() {
 
   const fetchProducts = async () => {
     try {
-      const res = await fetch(`${SKINORA_API_URL}/api/getproducts`);
+      const res = await fetch(`${SKINORA_API_URL}/api/products`);
+      // const res = await fetch(`${SKINORA_API_URL}/api/catalogs`);
       const data = await res.json();
 
       // API RETURNS ARRAY DIRECTLY
@@ -37,10 +38,11 @@ export default function Products() {
       />
 
       <div className="flex gap-2 mt-8 justify-center flex-wrap">
-        {products.slice(0, 10).map((product) => (
-          <ProductCard
+        {products.slice(0, 15).map((product) => (
+          <ProductCart
             key={product._id}
             id={product._id}
+            slug={product.slug}
             imgUrl={product.imageUrl}
             productName={product.name}
             productDesc={product.shortDescription}

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { FaShare } from "react-icons/fa6";
 import { CiStar } from "react-icons/ci";
 import { FaShoppingCart } from "react-icons/fa";
 
-export default function ProductCard({
+export default function ProductCart({
   id,
+  slug,
   OPrice,
   NPrice,
   imgUrl,
@@ -16,6 +17,7 @@ export default function ProductCard({
   reviewCount = 0,
 }) {
   const [liked, setLiked] = useState(false);
+  const navigate =useNavigate();
 
   const handleLike = (e) => {
     e.preventDefault();
@@ -27,10 +29,14 @@ export default function ProductCard({
     e.preventDefault();
     e.stopPropagation();
   };
-
+const handleCart = (e) => {
+    e.preventDefault();    
+  e.stopPropagation(); 
+  navigate("/cart");
+};
   return (
-    <Link to={`/product/${id}`} className="group w-64">
-      <div className="relative flex flex-col bg-white rounded-xl shadow-md 
+    <Link to={`/product/slug/${slug}`} className="group w-64">
+      <div className="relative flex flex-col bg-white rounded-xl shadow-md border border-gray-300
                       hover:shadow-2xl transition-all duration-300">
 
         {/* Image */}
@@ -72,7 +78,7 @@ export default function ProductCard({
 
         {/* Content */}
         <div className="flex flex-col gap-1 p-4">
-          <h4 className="font-semibold text-lg text-primary line-clamp-2">
+          <h4 className="font-semibold text-lg text-primary line-clamp-2 min-h-[60px]">
             {productName}
           </h4>
 
@@ -105,7 +111,7 @@ export default function ProductCard({
           </div>
 
           {/* Button */}
-          <button
+          <button onClick={handleCart}
             className="mt-4 flex items-center justify-center gap-2
                        bg-secondary hover:bg-primary
                        text-white py-2 rounded-lg
