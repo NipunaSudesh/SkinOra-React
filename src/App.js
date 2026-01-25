@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PublicLayout from "./layouts/PublicLayout";
+import HeartCursor from "./layouts/HeartCursor";
 import Home from "./Pages/home/Home";
 import AllCategories from "./Pages/AllCategories";
 import CategoryPage from "./Pages/singleCategory/CategoryPage";
@@ -8,6 +9,8 @@ import SingleProductPage from "./Pages/singleProduct/SingleProduct";
 
 function App() {
   return (
+    <>
+    <HeartCursor />
     <Router>
       <Routes>
         {/* Public routes */}
@@ -24,11 +27,12 @@ function App() {
           <Route path="/product-category/:slug" element={<CategoryPage />} />
         </Route>
         <Route element={<PublicLayout />}>
-          <Route path="/product/:slug" element={<SingleProductPage />} />
+          <Route path="/product/slug/:slug" element={<SingleProductPage />} />
         </Route>
 
       </Routes>
     </Router>
+    </>
   );
 }
 

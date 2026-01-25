@@ -15,7 +15,7 @@ export default function Products() {
 
   const fetchProducts = async () => {
     try {
-      const res = await fetch(`${SKINORA_API_URL}/api/getcatalogs`);
+      const res = await fetch(`${SKINORA_API_URL}/api/catalogs`);
       const data = await res.json();
 
       // API RETURNS ARRAY DIRECTLY

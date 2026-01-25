@@ -42,3 +42,44 @@ code {
     display: none; /* Chrome, Safari, Opera*/
   }
 }
+.heart {
+  position: fixed;
+  width: 14px;
+  height: 14px;
+  background: #ff5c8a;
+  transform: rotate(45deg);
+  pointer-events: none;
+  animation: heartFloat 1s ease-out forwards;
+  z-index: 9999;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #ec4c79;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -7px;
+  left: 0;
+}
+
+.heart::after {
+  left: -7px;
+  top: 0;
+}
+
+@keyframes heartFloat {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(45deg) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, -40px) rotate(45deg) scale(0.6);
+  }
+}

@@ -26,7 +26,7 @@ export default function AllProducts() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch(`${SKINORA_API_URL}/api/getproducts`);
+        const res = await fetch(`${SKINORA_API_URL}/api/products`);
         const data = await res.json();
         setProducts(Array.isArray(data) ? data : []);
       } catch (error) {

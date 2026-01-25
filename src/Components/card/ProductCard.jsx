@@ -30,7 +30,7 @@ export default function ProductCard({
   };
 
   return (
-    <Link to={`/product/${slug}`} className="group w-64">
+    <Link to={`/product/slug/${slug}`} className="group w-64">
       <div className="relative flex flex-col bg-white rounded-xl shadow-md border border-gray-300
                       hover:shadow-2xl transition-all duration-300">
 

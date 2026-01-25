@@ -36,3 +36,46 @@
     transform: rotate(360deg);
   }
 }
+/* Heart cursor animation */
+.heart {
+  position: fixed;
+  width: 14px;
+  height: 14px;
+  background: pink;
+  transform: rotate(45deg);
+  pointer-events: none;
+  animation: floatUp 1s ease-out forwards;
+  z-index: 9999;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: pink;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -7px;
+  left: 0;
+}
+
+.heart::after {
+  left: -7px;
+  top: 0;
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotate(45deg) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px) rotate(45deg) scale(0.5);
+  }
+}
+

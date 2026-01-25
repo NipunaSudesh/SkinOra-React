@@ -15,7 +15,7 @@ export default function Categories() {
   const navigate = useNavigate();
 const fetchCategories = async () => {
   try {
-const res = await fetch(`${SKINORA_API_URL}/api/getcategories`);
+const res = await fetch(`${SKINORA_API_URL}/api/categories`);
     // const res = await fetch("http://localhost:5000/api/getcategories");
 
     if (!res.ok) {

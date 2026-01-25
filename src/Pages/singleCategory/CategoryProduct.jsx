@@ -27,7 +27,7 @@ export default function CategoryProduct() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch(`${SKINORA_API_URL}/api/getproducts`);
+        const res = await fetch(`${SKINORA_API_URL}/api/products`);
         const data = await res.json();
 
         if (Array.isArray(data)) {

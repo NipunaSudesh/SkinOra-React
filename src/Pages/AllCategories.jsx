@@ -8,7 +8,7 @@ export default function AllCategories() {
 
   const fetchCategories =async () =>{
     try {
-      const res =await fetch(`${SKINORA_API_URL}/api/getcategories`);
+      const res =await fetch(`${SKINORA_API_URL}/api/categories`);
       if(!res.ok){
         throw new Error(`HTTP error! Status: ${res.status}`);
       }
