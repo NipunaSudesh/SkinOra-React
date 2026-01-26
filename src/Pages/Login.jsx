@@ -1,19 +1,50 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Typography from "../components/theme/Typography";
 import { logo } from "../../src/assets/images";
 import TextInput from "../components/theme/TextInput";
 import Button from "../components/theme/Button";
+import axios from "axios";
 const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [messageType, setMessageType] = useState("");
+  const [message, setMessage] = useState("");
+  const navigate =useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
-    console.log({ email, password });
-    // TODO: call login API here
+    setMessage("");
+    try {
+            const res = await axios.post(
+        `${SKINORA_API_URL}/api/auth/login`,
+        { email, password }
+      );
+           setMessage("Login successful! Redirecting...");
+      setMessageType("success");
+
+      console.log("Login:", res.data);
+
+      // optional: save token
+       localStorage.setItem("token", res.data.token);
+
+      setTimeout(() => {
+        navigate("/");
+      }, 1500);
+
+      setTimeout(() => setMessage(""), 3000);
+    } catch (error) {
+          const backendMessage =
+      error.response?.data?.message || "Something went wrong";
+
+    setMessage(backendMessage);
+    setMessageType("error");
+
+    setTimeout(() => setMessage(""), 3000);
+  }
+    
   };
 
   return (
@@ -38,6 +69,17 @@ export default function Login() {
             Use your email or phone number to sign in
           </p>
         </div>
+                {message && (
+                    <div
+            className={`mt-6 p-3 text-sm rounded-lg text-center ${
+              messageType === "success"
+                ? "bg-green-100 text-green-700"
+                : "bg-red-100 text-red-700"
+            }`}
+          >
+            {message}
+          </div>
+        )}
 
         {/* FORM */}
         <form onSubmit={handleSubmit} className="flex flex-col mt-8 space-y-4">
