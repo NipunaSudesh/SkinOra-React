@@ -12,7 +12,8 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen  mt-10 flex items-center justify-center px-4">
+    
+    <div className=" min-h-screen  mt-10 flex items-center justify-center px-4">
       <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
 
         {/* IMAGE */}
@@ -20,7 +21,7 @@ export default function Contact() {
           <img
             src={contactUs}
             alt="Contact Us"
-            className="w-full max-w-lg object-contain rounded-lg "
+            className="w-full h-[650px] max-w-lg object-contain rounded-2xl "
           />
         </div>
 

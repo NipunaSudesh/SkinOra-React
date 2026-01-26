@@ -18,11 +18,6 @@ export default function Footer() {
 
         {/* MAIN GRID */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
-      {/* xs: "360px",   // small phones
-        sm: "640px",   // default
-        md: "768px",   // tablets
-        lg: "1024px",  // laptops
-        xl: "1280px",  // desktops */}
           {/* LOGO */}
           <div className="flex flex-col items-center lg:items-start">
             <Link
