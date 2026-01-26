@@ -10,6 +10,8 @@ import AddToCart from "./Pages/AddToCart";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Profile from "./Pages/Profile";
+import About  from "./Pages/About";
+import Contact  from "./Pages/Contact";
 
 function App() {
   return (
@@ -47,6 +49,12 @@ function App() {
         </Route>
         <Route >
           <Route path="/register" element={<Register />} />
+        </Route>
+          <Route element={<PublicLayout />}>
+        <Route path="/about" element={<About />} />
+        </Route>
+          <Route element={<PublicLayout />}>
+<Route path="/contact" element={<Contact />} />
         </Route>
 
       </Routes>
