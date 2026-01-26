@@ -12,6 +12,8 @@ import Register from "./Pages/Register";
 import Profile from "./Pages/Profile";
 import About  from "./Pages/About";
 import Contact  from "./Pages/Contact";
+import PrivacyPolicy from "./Pages/PrivacyPolicy";
+import Team from "./Pages/Terms";
 
 function App() {
   return (
@@ -54,7 +56,14 @@ function App() {
         <Route path="/about" element={<About />} />
         </Route>
           <Route element={<PublicLayout />}>
-<Route path="/contact" element={<Contact />} />
+          <Route path="/contact" element={<Contact />} />
+        </Route>
+                  <Route element={<PublicLayout />}>
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        </Route>
+        
+          <Route element={<PublicLayout />}>
+          <Route path="/terms" element={<Team />} />
         </Route>
 
       </Routes>
