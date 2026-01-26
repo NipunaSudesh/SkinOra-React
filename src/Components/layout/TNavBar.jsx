@@ -16,7 +16,7 @@ const categories = [
   { label: "Serums", slug: "product-category/serums" },
   { label: "Mens Grooming", slug: "product-category/mens-grooming" },
   { label: "About Us", slug: "/about" },
-  { label: "Contact Us", slug: "/contact" },
+  // { label: "Contact Us", slug: "/contact" },
 ];
 
 export default function TNavBar() {
