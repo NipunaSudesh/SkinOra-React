@@ -27,9 +27,16 @@ const navigate =useNavigate();
   navigate("/cart");
 };
 
-  const handleUser = () => {
-  navigate("/login");
+const handleUser = () => {
+  const user = localStorage.getItem("user");
+
+  if (user) {
+    navigate("/profile");
+  } else {
+    navigate("/login");
+  }
 };
+
   return (
     <header className="fixed top-0 left-0 right-0 bg-[#f2f2cd] z-50">
       <div className="container-card">

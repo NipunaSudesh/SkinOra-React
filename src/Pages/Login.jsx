@@ -27,8 +27,9 @@ export default function Login() {
 
       console.log("Login:", res.data);
 
-      // optional: save token
-       localStorage.setItem("token", res.data.token);
+localStorage.setItem("token", res.data.token);
+localStorage.setItem("user", JSON.stringify(res.data.user));
+
 
       setTimeout(() => {
         navigate("/");

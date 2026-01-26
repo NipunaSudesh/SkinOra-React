@@ -9,6 +9,7 @@ import SingleProductPage from "./Pages/singleProduct/SingleProduct";
 import AddToCart from "./Pages/AddToCart";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
+import Profile from "./Pages/Profile";
 
 function App() {
   return (
@@ -37,6 +38,9 @@ function App() {
         </Route>
         <Route element={<PublicLayout />}>
           <Route path="/checkout" element={<AddToCart />} />
+        </Route>
+        <Route element={<PublicLayout />}>
+          <Route path="/profile" element={<Profile />} />
         </Route>
         <Route >
           <Route path="/login" element={<Login />} />
