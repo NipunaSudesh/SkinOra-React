@@ -6,6 +6,7 @@ import banner4 from "./banner4.webp";
 import banner5 from "./banner5.png";
 import banner6 from "./banner6.png";
 import logo from "./logo.png";
+import contactUs from "./contactUs.jpeg";
 
 
 export {
@@ -17,6 +18,7 @@ export {
   banner5,
   banner6,
   logo,
+  contactUs,
 
 
 };

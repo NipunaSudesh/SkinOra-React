@@ -7,6 +7,13 @@ import CategoryPage from "./Pages/singleCategory/CategoryPage";
 import AllProducts from "./Pages/AllProducts";
 import SingleProductPage from "./Pages/singleProduct/SingleProduct";
 import AddToCart from "./Pages/AddToCart";
+import Login from "./Pages/Login";
+import Register from "./Pages/Register";
+import Profile from "./Pages/Profile";
+import About  from "./Pages/About";
+import Contact  from "./Pages/Contact";
+import PrivacyPolicy from "./Pages/PrivacyPolicy";
+import Team from "./Pages/Terms";
 
 function App() {
   return (
@@ -35,6 +42,28 @@ function App() {
         </Route>
         <Route element={<PublicLayout />}>
           <Route path="/checkout" element={<AddToCart />} />
+        </Route>
+        <Route element={<PublicLayout />}>
+          <Route path="/profile" element={<Profile />} />
+        </Route>
+        <Route >
+          <Route path="/login" element={<Login />} />
+        </Route>
+        <Route >
+          <Route path="/register" element={<Register />} />
+        </Route>
+          <Route element={<PublicLayout />}>
+        <Route path="/about" element={<About />} />
+        </Route>
+          <Route element={<PublicLayout />}>
+          <Route path="/contact" element={<Contact />} />
+        </Route>
+                  <Route element={<PublicLayout />}>
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        </Route>
+        
+          <Route element={<PublicLayout />}>
+          <Route path="/terms" element={<Team />} />
         </Route>
 
       </Routes>

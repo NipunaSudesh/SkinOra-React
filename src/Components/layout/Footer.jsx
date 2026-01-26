@@ -18,11 +18,6 @@ export default function Footer() {
 
         {/* MAIN GRID */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
-      {/* xs: "360px",   // small phones
-        sm: "640px",   // default
-        md: "768px",   // tablets
-        lg: "1024px",  // laptops
-        xl: "1280px",  // desktops */}
           {/* LOGO */}
           <div className="flex flex-col items-center lg:items-start">
             <Link
@@ -49,10 +44,10 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Customer Service</h4>
             <ul className="space-y-3 text-sm text-gray-300">
-              <li><Link to="/deliveries">Deliveries</Link></li>
-              <li><Link to="/faq">FAQ</Link></li>
-              <li><Link to="/account">My Account</Link></li>
-              <li><Link to="/track-order">Track Order</Link></li>
+              <li><Link to="#">Deliveries</Link></li>
+              <li><Link to="#">FAQ</Link></li>
+              <li><Link to="/profile">My Account</Link></li>
+              <li><Link to="#">Track Order</Link></li>
             </ul>
           </div>
 
@@ -60,11 +55,12 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Products</h4>
             <ul className="space-y-3 text-sm text-gray-300">
-              <li><Link to="/shop">Shop All</Link></li>
-              <li><Link to="/new-arrivals">New Arrivals</Link></li>
-              <li><Link to="/best-sellers">Best Sellers</Link></li>
-              <li><Link to="/brands">Brands</Link></li>
-              <li><Link to="/promotions">Promotions</Link></li>
+              <li><Link to="/all-products">Shop All</Link></li>
+              <li><Link to="/all-products">New Arrivals</Link></li>
+              <li><Link to="/all-products">Best Sellers</Link></li>
+              <li><Link to="/all-categories">Brands</Link></li>
+              <li><Link to="/all-categories">Categories</Link></li>
+         
             </ul>
           </div>
 
