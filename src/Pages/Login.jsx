@@ -4,6 +4,7 @@ import Typography from "../components/theme/Typography";
 import { logo } from "../../src/assets/images";
 import TextInput from "../components/theme/TextInput";
 import Button from "../components/theme/Button";
+const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
 
 export default function Login() {
   const [email, setEmail] = useState("");

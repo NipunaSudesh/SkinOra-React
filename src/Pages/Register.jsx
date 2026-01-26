@@ -1,26 +1,69 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 import Typography from "../components/theme/Typography";
 import { logo } from "../../src/assets/images";
 import TextInput from "../components/theme/TextInput";
+const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
+
 
 export default function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [messageType, setMessageType] = useState("");
+  const [message, setMessage] = useState("");
+  const navigate =useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (password !== confirmPassword) {
-      alert("Passwords do not match");
-      return;
-    }
+  // clear previous message
+  setMessage("");
 
-    console.log({ name, email, password });
-    // TODO: call register API here
-  };
+  if (password !== confirmPassword) {
+    setMessage("Passwords do not match");
+    setMessageType("error");
+
+    setTimeout(() => setMessage(""), 3000);
+    return;
+  }
+
+  try {
+    const res = await axios.post(
+      `${SKINORA_API_URL}/api/auth/register`,
+      {
+        name,
+        email,
+        password,
+      }
+    );
+
+    setMessage("Registration successful! Redirecting to login...");
+    setMessageType("success");
+
+    console.log("Registered:", res.data);
+
+    // redirect after 1.5s
+    setTimeout(() => {
+      navigate("/login");
+    }, 1500);
+
+    // hide message after 3s
+    setTimeout(() => setMessage(""), 3000);
+
+  } catch (error) {
+    const backendMessage =
+      error.response?.data?.message || "Something went wrong";
+
+    setMessage(backendMessage);
+    setMessageType("error");
+
+    setTimeout(() => setMessage(""), 3000);
+  }
+};
+
 
   return (
     <div className="flex min-h-screen items-center justify-center">
@@ -44,6 +87,17 @@ export default function Register() {
             Fill in the details to create your account
           </p>
         </div>
+        {message && (
+                    <div
+            className={`mt-6 p-3 text-sm rounded-lg text-center ${
+              messageType === "success"
+                ? "bg-green-100 text-green-700"
+                : "bg-red-100 text-red-700"
+            }`}
+          >
+            {message}
+          </div>
+        )}
 
         {/* FORM */}
         <form onSubmit={handleSubmit} className="flex flex-col mt-8 space-y-4">
