@@ -1,6 +1,6 @@
 import React from 'react'
 import banner6 from "../../assets/images/banner6.png";
-import Typography from "../../Components/theme/Typography";
+import Typography from "../../Components/Theme/Typography";
 
 export default function AboutSkinOra() {
   return (

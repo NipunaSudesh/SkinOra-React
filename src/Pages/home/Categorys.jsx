@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Header } from "../../Components/theme/Header";
+import { Header } from "../../Components/Theme/Header";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Header } from "../../Components/theme/Header";
+import { Header } from "../../Components/Theme/Header";
 import ProductCart from "../../Components/cart/ProductCart";
 import { useNavigate } from "react-router-dom";
 

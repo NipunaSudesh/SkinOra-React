@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Header } from '../Components/theme/Header';
+import { Header } from '../Components/Theme/Header';
 import CategoryCart from "../Components/cart/CategoryCart";
 const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
 

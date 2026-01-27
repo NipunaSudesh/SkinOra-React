@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Features from "../Pages/home/Features";
 import { banner } from "../assets/images";
-import { Header } from "../Components/theme/Header";
+import { Header } from "../Components/Theme/Header";
 import ProductCart from "../Components/cart/ProductCart";
 import ProductFilter from "./singleCategory/ProductFilter";
 import MobileFilterDrawer from "./singleCategory/MobileFilterDrawer";

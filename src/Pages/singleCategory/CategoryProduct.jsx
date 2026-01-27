@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import ProductCart from "../../Components/cart/ProductCart";
-import { Header } from "../../Components/theme/Header";
+import { Header } from "../../Components/Theme/Header";
 import ProductFilter from "../singleCategory/ProductFilter";
 import MobileFilterDrawer from "../singleCategory/MobileFilterDrawer";
 

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { CiStar } from "react-icons/ci";
 import { useNavigate, useParams } from "react-router-dom";
 import { Truck, ShieldCheck } from "lucide-react";
-import Typography from "../../Components/theme/Typography";
+import Typography from "../../Components/Theme/Typography";
 import ProductCart from "../../Components/cart/ProductCart";
-import { Header } from "../../Components/theme/Header";
+import { Header } from "../../Components/Theme/Header";
 
 const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
 
