@@ -2,8 +2,8 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 
 // layout components
-import NavBar from "../layout/NavBar";
-import Footer from "../layout/Footer";
+import NavBar from "./NavBar";
+import Footer from "./Footer";
 
 
 export default function PublicLayout() {
