@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Features from "../Pages/home/Features";
 import { banner } from "../assets/images";
-import { Header } from "../components/theme/Header";
-import ProductCart from "../components/cart/ProductCart";
+import { Header } from "../Components/theme/Header";
+import ProductCart from "../Components/cart/ProductCart";
 import ProductFilter from "./singleCategory/ProductFilter";
 import MobileFilterDrawer from "./singleCategory/MobileFilterDrawer";
 

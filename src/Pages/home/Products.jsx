@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Header } from "../../components/theme/Header";
-import ProductCart from "../../components/cart/ProductCart";
+import { Header } from "../../Components/theme/Header";
+import ProductCart from "../../Components/cart/ProductCart";
 import { useNavigate } from "react-router-dom";
 
 const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;

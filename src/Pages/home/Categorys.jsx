@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Header } from "../../components/theme/Header";
+import { Header } from "../../Components/theme/Header";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import "swiper/css";
 import { useNavigate } from "react-router-dom";
-import CategoryCart from "../../components/cart/CategoryCart";
+import CategoryCart from "../../Components/cart/CategoryCart";
 const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
 
 

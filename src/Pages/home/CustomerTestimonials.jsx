@@ -1,6 +1,6 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
-import { Header } from "../../components/theme/Header";
+import { Header } from "../../Components/theme/Header";
 
 const testimonials = [
   {

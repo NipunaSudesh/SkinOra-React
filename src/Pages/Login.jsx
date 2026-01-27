@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Typography from "../components/theme/Typography";
+import Typography from "../Components/theme/Typography";
 import { logo } from "../../src/assets/images";
-import TextInput from "../components/theme/TextInput";
+import TextInput from "../Components/theme/TextInput";
 import axios from "axios";
 const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
 
