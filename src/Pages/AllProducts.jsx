@@ -4,7 +4,6 @@ import { banner } from "../assets/images";
 import { Header } from "../components/theme/Header";
 import ProductCart from "../components/cart/ProductCart";
 import ProductFilter from "./singleCategory/ProductFilter";
-import MobileFilterBar from "./singleCategory/MobileFilterDrawer";
 import MobileFilterDrawer from "./singleCategory/MobileFilterDrawer";
 
 const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
