@@ -9,7 +9,7 @@ import {
   FaEnvelope,
   FaPhoneAlt,
 } from "react-icons/fa";
-import Typography from "../Theme/Typography";
+import Typography from "../theme/Typography";
 
 export default function Footer() {
   return (
