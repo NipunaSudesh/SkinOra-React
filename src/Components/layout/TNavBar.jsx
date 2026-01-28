@@ -38,7 +38,7 @@ const handleUser = () => {
 };
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-[#f2f2cd] z-50">
+    <div className="fixed top-0 left-0 right-0 bg-[#f2f2cd] z-50">
       <div className="container-card">
         <div className="flex items-center justify-between h-[60px] relative">
 
@@ -144,6 +144,6 @@ const handleUser = () => {
 
         </div>
       </div>
-    </header>
+    </div>
   );
 }
