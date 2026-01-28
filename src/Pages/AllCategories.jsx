@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Header } from '../components/theme/Header';
-import CategoryCart from "../components/cart/CategoryCart";
+import { Header } from '../Components/theme/Header';
+import CategoryCart from "../Components/cartTemplate/CategoryCart";
 const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
 
 export default function AllCategories() {

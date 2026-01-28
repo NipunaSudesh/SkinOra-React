@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import {logo} from "../../assets/images";
-import TextInput from "../../components/theme/TextInput";
+import TextInput from "../theme/TextInput";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import { FiSearch, FiMenu, FiX } from "react-icons/fi";
 import { Link,  useNavigate } from "react-router-dom";
-import Typography from "../../components/theme/Typography";
+import Typography from "../theme/Typography";
 
 const categories = [
   { label: "All Products", slug: "all-products" },
