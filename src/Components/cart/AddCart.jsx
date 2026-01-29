@@ -13,14 +13,26 @@ export default function AddCart({
   category,
   brand,
   qty,
+    checked,
+  onSelect,
   onQtyChange,
   onRemove,
+   mode = "cart",
 }) {
   return (
     <div
       key={slug}
       className="flex gap-4 bg-white p-4 rounded-lg shadow"
     >
+            {/* CHECKBOX */}
+            {mode === "cart" && ( 
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={onSelect}
+        className="w-5 h-5"
+      />
+           ) }
       <img
         src={imageUrl}
         alt={name}
@@ -46,38 +58,48 @@ export default function AddCart({
                   <div className="flex items-end gap-3">
             {oldPrice && (
               <p className="text-sm text-gray-400 line-through">
-                Rs. {oldPrice}
+                Rs. {oldPrice}.00
               </p>
             )}
             <p className="text-xl font-bold text-primary">
-              Rs. {price}
+              Rs. {price}.00
             </p>
           </div>
 
         <div className="flex items-center gap-3 mt-3">
-          <button
-            onClick={() => onQtyChange(slug, qty - 1)}
-            className="px-3 py-1 border rounded"
-            disabled={qty <= 1}
-          >
-            −
-          </button>
+          {mode === "cart" ? (
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => onQtyChange(slug, qty - 1)}
+                disabled={qty <= 1}
+                className="px-3 py-1 border rounded disabled:opacity-50"
+              >
+                −
+              </button>
 
-          <span>{qty}</span>
+              <span className="min-w-[20px] text-center">{qty}</span>
 
-          <button
-            onClick={() => onQtyChange(slug, qty + 1)}
-            className="px-3 py-1 border rounded"
-          >
-            +
-          </button>
+              <button
+                onClick={() => onQtyChange(slug, qty + 1)}
+                className="px-3 py-1 border rounded"
+              >
+                +
+              </button>
+            </div>
+          ) : (
+            <span className="font-medium text-gray-700">Qty: {qty}</span>
+          )}
 
-          <button
+
+{
+  mode === "cart" && ( 
+             <button
             onClick={() => onRemove(slug)}
             className="ml-auto text-red-500"
           >
             <FaTrash />
-          </button>
+          </button>)
+}
         </div>
       </div>
     </div>

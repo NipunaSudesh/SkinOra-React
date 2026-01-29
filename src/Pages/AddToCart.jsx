@@ -1,53 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { FaTrash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import AddCart from "../Components/cart/AddCart";
 const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
 
 export default function AddToCart() {
   const [cartItems, setCartItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState([]);
   const navigate =useNavigate();
-const SHIPPING_FEE = 350;
+  const shipping_fee =350;
+const SHIPPING_FEE = shipping_fee*selectedItems.length
 
-// const [cartItems, setCartItems] = useState([
+const toggleSelectItem = (slug) => {
+  setSelectedItems((prev) =>
+    prev.includes(slug)
+      ? prev.filter((s) => s !== slug) // unselect
+      : [...prev, slug]               // select
+  );
+};
 
-// {
-//   Id: "69647f01102f4ba46eac224a",
-//   name: "Cetaphil Baby Daily Lotion 400ml",
-//   slug: "cetaphil-baby-daily-lotion-400ml",
-//   imageUrl: "https://res.cloudinary.com/dahofpwrr/image/upload/v1768103827/cetaphil-baby-daily-lotion-1_apvbs0.webp",
-
-//   price: 6200,
-//   oldPrice: 7000,
-//   discountPercent: 11,
-
-//   qty: 1,
-
-//   stockStatus: "IN_STOCK",
-//   category: "Baby Care",
-//   brand: "Cetaphil"
-// },
-// {
-//   Id: "69647f01102f4ba46eac224a",
-//   name: "Cetaphil Baby Daily Lotion 400ml",
-//   slug: "cetaphil-baby-daily-lotion-400ml",
-//   imageUrl: "https://res.cloudinary.com/dahofpwrr/image/upload/v1768103827/cetaphil-baby-daily-lotion-1_apvbs0.webp",
-
-//   price: 6200,
-//   oldPrice: 7000,
-//   discountPercent: 11,
-
-//   qty: 1,
-
-//   stockStatus: "IN_STOCK",
-//   category: "Baby Care",
-//   brand: "Cetaphil"
-// },
-
-//   ]);
-
-
-  /* FETCH CART */
+  /* FETCh CART */
   const fetchCart = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -126,30 +97,32 @@ const removeItem = async (slug) => {
     console.log("Error removing item:", error.message);
   }
 };
+const selectedCartItems = cartItems.filter((item) =>
+  selectedItems.includes(item.slug)
+);
 
-  // const updateQty = (slug, qty) => {
-  //   if (qty < 1) return;
-  //   setCartItems((prev) =>
-  //     prev.map((item) =>
-  //       item.slug === slug ? { ...item, qty } : item
-  //     )
-  //   );
-  // };
-
-  // const removeItem = (slug) => {
-  //   setCartItems((prev) =>
-  //     prev.filter((item) => item.slug !== slug)
-  //   );
-  // };
-
-  const SubTotal = cartItems.reduce(
+  const SubTotal = selectedCartItems.reduce(
     (sum, item) => sum  + item.price * item.qty,
     0
   );
   const total = SubTotal + SHIPPING_FEE;
-const handleCheckOut =()=>{
-navigate('/checkout');
-}
+
+const handleCheckOut = () => {
+  if (selectedCartItems.length === 0) {
+    alert("Please select at least one item to proceed to checkout.");
+    return;
+  }
+
+  navigate("/checkout", {
+    state: {
+      items: selectedCartItems,
+      subtotal: SubTotal,
+      shipping: SHIPPING_FEE,
+      total,
+    },
+  });
+};
+
 
   if (!cartItems.length) {
     return (
@@ -178,7 +151,9 @@ navigate('/checkout');
               key={item.slug}
               {...item}
               onQtyChange={updateQty}
+              onSelect={() => toggleSelectItem(item.slug)}
               onRemove={removeItem}
+              mode="cart"
             />
 
   ))}
