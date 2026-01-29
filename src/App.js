@@ -16,6 +16,7 @@ import Contact from "./Pages/Contact";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import Team from "./Pages/Terms";
 import ThankYou from "./Pages/ThankYou";
+import ErrorPage from "./Pages/ErrorPage";
 
 function App() {
   return (
@@ -45,7 +46,8 @@ function App() {
           {/* AUTH ROUTES (NO LAYOUT) */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-
+          <Route path="/register" element={<Register />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Router>
     </>
