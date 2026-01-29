@@ -15,6 +15,7 @@ import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import Team from "./Pages/Terms";
+import ThankYou from "./Pages/ThankYou";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<Team />} />
+            <Route path="/thankyou" element={<ThankYou />} />
           </Route>
 
           {/* AUTH ROUTES (NO LAYOUT) */}

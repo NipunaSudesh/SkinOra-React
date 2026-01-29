@@ -21,7 +21,9 @@ const [shippingInfo, setShippingInfo] = useState({
     navigate("/");
     return null;
   }
-
+const handlePlaceOrder =()=>{
+  navigate("/thankyou");
+}
   const { items, subtotal, shipping, total } = state;
 
   return (
@@ -198,7 +200,7 @@ const [shippingInfo, setShippingInfo] = useState({
           <span>Rs. {total}.00</span>
         </div>
 
-        <button className="w-full bg-primary text-white py-3 rounded-lg">
+        <button className="w-full bg-primary text-white py-3 rounded-lg" onClick={handlePlaceOrder}>
           Place Order
         </button>
       </div>

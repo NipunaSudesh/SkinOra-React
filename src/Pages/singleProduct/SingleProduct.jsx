@@ -93,13 +93,34 @@ const handleCart = async (e) => {
 
 
   if (!product) {
-    return <p className="text-center mt-10">Loading...</p>;
+    return <p className="text-center mt-10 text-xl text-primary">Loading...</p>;
   }
 
 
 const HandleCheckOut = () => {
-  navigate("/checkout");
+  const checkoutItem = {
+    id: product._id,
+    slug: product.slug,
+    name: product.name,
+    imageUrl: product.imageUrl,
+    price: product.price,
+    qty: qty,
+  };
+
+  const subtotal = product.price * qty;
+  const shipping = 350; 
+  const total = subtotal + shipping;
+
+  navigate("/checkout", {
+    state: {
+      items: [checkoutItem], 
+      subtotal,
+      shipping,
+      total,
+    },
+  });
 };
+
 
   return (
     <>
