@@ -4,6 +4,8 @@ import { FaHeart } from "react-icons/fa";
 import { FaShare } from "react-icons/fa6";
 import { CiStar } from "react-icons/ci";
 import { FaShoppingCart } from "react-icons/fa";
+const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
+
 
 export default function ProductCart({
   id,
@@ -18,6 +20,7 @@ export default function ProductCart({
 }) {
   const [liked, setLiked] = useState(false);
   const navigate =useNavigate();
+  
 
   const handleLike = (e) => {
     e.preventDefault();
@@ -29,11 +32,43 @@ export default function ProductCart({
     e.preventDefault();
     e.stopPropagation();
   };
-const handleCart = (e) => {
-    e.preventDefault();    
-  e.stopPropagation(); 
-  navigate("/cart");
+
+
+const handleCart = async (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      navigate("/login");
+      return;
+    }
+
+    const res = await fetch(`${SKINORA_API_URL}/api/cart/add`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        productId: id,
+        qty: 1,
+      }),
+    });
+    alert("Product added to cart successfully!");
+
+    if (!res.ok) {
+      throw new Error("Failed to add to cart");
+    }
+
+    navigate("/cart");
+  } catch (error) {
+    console.log("Add to cart error:", error.message);
+  }
 };
+
   return (
     <Link to={`/product/slug/${slug}`} className="group w-64">
       <div className="relative flex flex-col bg-white rounded-xl shadow-md border border-gray-300

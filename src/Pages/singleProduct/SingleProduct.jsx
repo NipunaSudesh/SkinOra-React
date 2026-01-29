@@ -5,7 +5,6 @@ import { Truck, ShieldCheck } from "lucide-react";
 import Typography from "../../Components/Theme/Typography";
 import ProductCart from "../../Components/cart/ProductCart";
 import { Header } from "../../Components/Theme/Header";
-
 const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
 
 export default function SingleProduct() {
@@ -14,7 +13,41 @@ const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [products, setProducts] = useState([]);
   const [qty, setQty] = useState(1);
+  
 
+const handleCart = async (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      navigate("/login");
+      return;
+    }
+
+    const res = await fetch(`${SKINORA_API_URL}/api/cart/add`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        productId: product._id,
+        qty: 1,
+      }),
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to add to cart");
+    }
+
+    navigate("/cart");
+  } catch (error) {
+    console.log("Add to cart error:", error.message);
+  }
+};
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -60,15 +93,34 @@ const navigate = useNavigate();
 
 
   if (!product) {
-    return <p className="text-center mt-10">Loading...</p>;
+    return <p className="text-center mt-10 text-xl text-primary">Loading...</p>;
   }
 
-const handleCart = () => {
-  navigate("/cart");
-};
+
 const HandleCheckOut = () => {
-  navigate("/checkout");
+  const checkoutItem = {
+    id: product._id,
+    slug: product.slug,
+    name: product.name,
+    imageUrl: product.imageUrl,
+    price: product.price,
+    qty: qty,
+  };
+
+  const subtotal = product.price * qty;
+  const shipping = 350; 
+  const total = subtotal + shipping;
+
+  navigate("/checkout", {
+    state: {
+      items: [checkoutItem], 
+      subtotal,
+      shipping,
+      total,
+    },
+  });
 };
+
 
   return (
     <>
