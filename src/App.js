@@ -17,6 +17,7 @@ import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import Team from "./Pages/Terms";
 import ThankYou from "./Pages/ThankYou";
 import ErrorPage from "./Pages/ErrorPage";
+import SearchPage from "./Pages/SearchPage";
 
 function App() {
   return (
@@ -41,7 +42,9 @@ function App() {
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<Team />} />
             <Route path="/thankyou" element={<ThankYou />} />
+           <Route path="/search" element={<SearchPage />} />
           </Route>
+
 
           {/* AUTH ROUTES (NO LAYOUT) */}
           <Route path="/login" element={<Login />} />
