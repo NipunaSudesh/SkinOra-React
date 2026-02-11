@@ -22,7 +22,7 @@ import SearchPage from "./Pages/SearchPage";
 function App() {
   return (
     <>
-      <HeartCursor />
+      {/* <HeartCursor /> */}
 
       <Router>
         <Routes>
