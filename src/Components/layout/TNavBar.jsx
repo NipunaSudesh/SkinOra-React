@@ -1,169 +1,21 @@
-// import React, { useState } from "react";
-// import {logo} from "../../assets/images";
-// import TextInput from "../Theme/TextInput";
-// import { FaShoppingCart, FaUser } from "react-icons/fa";
-// import { FiSearch, FiMenu, FiX } from "react-icons/fi";
-// import { Link,  useNavigate } from "react-router-dom";
-// import Typography from "../Theme/Typography";
-
-// const categories = [
-//   { label: "All Products", slug: "all-products" },
-//   { label: "Baby Care", slug: "product-category/baby-care" },
-//   { label: "Body Care", slug: "product-category/body-care" },
-//   { label: "Face Care", slug: "product-category/face-care" },
-//   { label: "Hair Care", slug: "product-category/hair-care" },
-//   { label: "Sunscreens", slug: "product-category/sunscreens" },
-//   { label: "Serums", slug: "product-category/serums" },
-//   { label: "Mens Grooming", slug: "product-category/mens-grooming" },
-//   { label: "About Us", slug: "/about" },
-//   // { label: "Contact Us", slug: "/contact" },
-// ];
-
-// export default function TNavBar() {
-//   const [showMobileSearch, setShowMobileSearch] = useState(false);
-//   const [showMobileMenu, setShowMobileMenu] = useState(false);
-// const navigate =useNavigate();
-//   const handleCart = () => {
-//   navigate("/cart");
-// };
-
-// const handleUser = () => {
-//   const user = localStorage.getItem("user");
-
-//   if (user) {
-//     navigate("/profile");
-//   } else {
-//     navigate("/login");
-//   }
-// };
-
-//   return (
-//     <div className="fixed top-0 left-0 right-0 bg-[#f2f2cd] z-50">
-//       <div className="container-card">
-//         <div className="flex items-center justify-between h-[60px] relative">
-
-// {/* Logo + Brand */}
-// <Link to="/" className="flex items-center shrink-0">
-//   <img
-//     src={logo}
-//     alt="Skinora Logo"
-//     className="h-10 w-auto"
-//   />
-//   <Typography
-//     variant="h2"
-//     className="text-lg sm:text-lg font-bold text-primary whitespace-nowrap"
-//   >
-//     Skin<span className="text-secondary">Ora</span>
-//   </Typography>
-// </Link>
-
-
-//           {/* Desktop Search */}
-//           <div className="hidden sm:flex flex-1 justify-center">
-//             <div className="flex w-full max-w-sm mx-4">
-//               <TextInput
-//                 type="text"
-//                 placeholder="Search for products, brands and more"
-//                 className="w-full h-9 px-4 border border-gray-300 rounded-l-full focus:outline-none"
-//               />
-//               <button className="bg-primary text-white h-9 px-4 rounded-r-full hover:bg-secondary flex items-center justify-center transition">
-//                 <FiSearch />
-//               </button>
-//             </div>
-//           </div>
-
-//           {/* Right Icons */}
-//           <div className="flex items-center gap-4">
-//             {/* Mobile Search */}
-//             <button
-//               className="sm:hidden text-gray-700 text-lg hover:text-secondary transition"
-//               onClick={() => {
-//                 setShowMobileSearch(!showMobileSearch);
-//                 setShowMobileMenu(false);
-//               }}
-//             >
-//               {showMobileSearch ? <FiX /> : <FiSearch />}
-//             </button>
-
-//             <FaShoppingCart onClick={handleCart} className="text-gray-700 hover:text-secondary cursor-pointer text-lg transition" />
-//             <FaUser onClick={handleUser} className="text-gray-700 hover:text-secondary cursor-pointer text-lg transition" />
-
-//             {/* Mobile Menu */}
-//             <button
-//               className="lg:hidden text-gray-700 text-xl hover:text-secondary transition"
-//               onClick={() => {
-//                 setShowMobileMenu(!showMobileMenu);
-//                 setShowMobileSearch(false);
-//               }}
-//             >
-//               {showMobileMenu ? <FiX /> : <FiMenu />}
-//             </button>
-//           </div>
-
-//           {/*  Mobile Search Overlay */}
-//           {showMobileSearch && (
-//             <div className="absolute left-0 right-0 top-full mt-1 lg:hidden z-50">
-//               <div className="container-card">
-//                 <div className="flex shadow-lg rounded-full bg-white">
-//                   <TextInput
-//                     type="text"
-//                     placeholder="Search products..."
-//                     className="w-full h-9 px-4 border border-gray-300 rounded-l-full focus:outline-none"
-//                     autoFocus
-//                   />
-//                   <button className="bg-blue-500 text-white h-9 px-4 rounded-r-full flex items-center justify-center hover:text-secondary ">
-//                     <FiSearch />
-//                   </button>
-//                 </div>
-//               </div>
-//             </div>
-//           )}
-
-//           {/*  Mobile Menu Popup */}
-//           {showMobileMenu && (
-//             <div className="absolute left-0 right-0 top-full lg:hidden z-50">
-//               <div className="container-card">
-//                 <div className="bg-white shadow-lg rounded-lg py-4">
-//                   <ul className="flex flex-col divide-y">
-//                     {categories.map((item) => (
-//                       <li key={item.path}>
-//                         <Link
-//                           to={item.path}
-//                           onClick={() => setShowMobileMenu(false)}
-//                           className="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-secondary"
-//                         >
-//                           {item.label}
-//                         </Link>
-//                       </li>
-//                     ))}
-//                   </ul>
-//                 </div>
-//               </div>
-//             </div>
-//           )}
-
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { logo } from "../../assets/images";
 import TextInput from "../Theme/TextInput";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import { FiSearch, FiMenu, FiX } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import Typography from "../Theme/Typography";
+import { CartContext } from "../../context/CartContext";
 
 const categories = [
-  { label: "All Products", slug: "all-products" },
-  { label: "Baby Care", slug: "product-category/baby-care" },
-  { label: "Body Care", slug: "product-category/body-care" },
-  { label: "Face Care", slug: "product-category/face-care" },
-  { label: "Hair Care", slug: "product-category/hair-care" },
-  { label: "Sunscreens", slug: "product-category/sunscreens" },
-  { label: "Serums", slug: "product-category/serums" },
-  { label: "Mens Grooming", slug: "product-category/mens-grooming" },
+  { label: "All Products", slug: "/all-products" },
+  { label: "Baby Care", slug: "/product-category/baby-care" },
+  { label: "Body Care", slug: "/product-category/body-care" },
+  { label: "Face Care", slug: "/product-category/face-care" },
+  { label: "Hair Care", slug: "/product-category/hair-care" },
+  { label: "Sunscreens", slug: "/product-category/sunscreens" },
+  { label: "Serums", slug: "/product-category/serums" },
+  { label: "Mens Grooming", slug: "/product-category/mens-grooming" },
   { label: "About Us", slug: "/about" },
 ];
 
@@ -171,8 +23,26 @@ export default function TNavBar() {
   const [showMobileSearch, setShowMobileSearch] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-
+  const [cartItems, setCartItems] = useState(0);
+const { cartItems: cartItemsFromContext } = useContext(CartContext);
   const navigate = useNavigate();
+
+  // Load cart items from localStorage
+  const loadCart = () => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    setCartItems(cart.length);
+  };
+
+  useEffect(() => {
+    loadCart();
+
+    // Optional: listen for storage events (cart updated in another tab)
+    const handleStorage = (e) => {
+      if (e.key === "cart") loadCart();
+    };
+    window.addEventListener("storage", handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
+  }, []);
 
   /* CART */
   const handleCart = () => navigate("/cart");
@@ -198,7 +68,6 @@ export default function TNavBar() {
     <div className="fixed top-0 left-0 right-0 bg-[#f2f2cd] z-50">
       <div className="container-card">
         <div className="flex items-center justify-between h-[60px] relative">
-
           {/* Logo */}
           <Link to="/" className="flex items-center shrink-0">
             <img src={logo} alt="Skinora Logo" className="h-10 w-auto" />
@@ -228,7 +97,7 @@ export default function TNavBar() {
           </div>
 
           {/* Right Icons */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 relative">
             <button
               className="sm:hidden text-lg"
               onClick={() => {
@@ -239,7 +108,14 @@ export default function TNavBar() {
               {showMobileSearch ? <FiX /> : <FiSearch />}
             </button>
 
-            <FaShoppingCart onClick={handleCart} className="cursor-pointer" />
+            {/* Cart Icon with dynamic badge */}
+            <div className="relative cursor-pointer" onClick={handleCart}>
+              <FaShoppingCart className="text-xl" />
+              <span className="absolute -top-2 -right-2 bg-white text-primary text-xs w-4 h-4 rounded-full flex items-center justify-center font-bold">
+                {cartItemsFromContext.length}
+              </span>
+            </div>
+
             <FaUser onClick={handleUser} className="cursor-pointer" />
 
             <button
@@ -300,7 +176,6 @@ export default function TNavBar() {
               </div>
             </div>
           )}
-
         </div>
       </div>
     </div>
