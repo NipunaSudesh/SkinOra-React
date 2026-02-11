@@ -31,6 +31,7 @@ const { cartItems: cartItemsFromContext } = useContext(CartContext);
   const loadCart = () => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     setCartItems(cart.length);
+    console.log("Cart items loaded:", cartItems);
   };
 
   useEffect(() => {
