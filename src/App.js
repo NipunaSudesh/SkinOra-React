@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PublicLayout from "./Components/layout/PublicLayout";
-import HeartCursor from "./Components/layout/HeartCursor";
+// import HeartCursor from "./Components/layout/HeartCursor";
 import CheckOut from "./Pages/CheckOut";
 import Home from "./Pages/home/Home";
 import AllCategories from "./Pages/AllCategories";

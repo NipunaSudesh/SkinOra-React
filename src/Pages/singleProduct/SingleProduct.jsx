@@ -5,7 +5,7 @@ import { Truck, ShieldCheck } from "lucide-react";
 import Typography from "../../Components/Theme/Typography";
 import ProductCart from "../../Components/cart/ProductCart";
 import { Header } from "../../Components/Theme/Header";
-import { CartContext } from "../../context/CartContext";
+
 const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
 
 export default function SingleProduct() {
