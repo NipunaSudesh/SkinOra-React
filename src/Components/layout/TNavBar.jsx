@@ -27,12 +27,11 @@ export default function TNavBar() {
 const { cartItems: cartItemsFromContext } = useContext(CartContext);
   const navigate = useNavigate();
 
-  const loadCart = () => {
+const loadCart = useCallback(() => {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   setCartItems(cart.length);
-  console.log("Cart items loaded:",cartItems);
-};
-
+  console.log("Cart items loaded:", cart.length); 
+}, [setCartItems]);
 useEffect(() => {
   loadCart();
 
@@ -42,7 +41,7 @@ useEffect(() => {
 
   window.addEventListener("storage", handleStorage);
   return () => window.removeEventListener("storage", handleStorage);
-}, [])
+}, [loadCart]);
   // Load cart items from localStorage
   // const loadCart = () => {
   //   const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -91,6 +90,7 @@ useEffect(() => {
     if (!searchTerm.trim()) return;
     navigate(`/search?query=${encodeURIComponent(searchTerm)}`);
     setShowMobileSearch(false);
+    console.log("Cart items from context:", cartItems);
   };
 
   const handleKeyDown = (e) => {
