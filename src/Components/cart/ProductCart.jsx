@@ -44,7 +44,7 @@ export default function ProductCart({
       return;
     }
 
-    // 1️⃣ Optimistically update cart count immediately
+    // 1️Optimistically update cart count immediately
     addToCartLocal({
       _id: id,
       slug,
@@ -55,7 +55,7 @@ export default function ProductCart({
     });
 
     try {
-      // 2️⃣ Call backend API
+      // 2️ Call backend API
       const res = await fetch(`${SKINORA_API_URL}/api/cart/add`, {
         method: "POST",
         headers: {
