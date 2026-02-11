@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import { logo } from "../../assets/images";
 import TextInput from "../Theme/TextInput";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
@@ -28,22 +28,37 @@ const { cartItems: cartItemsFromContext } = useContext(CartContext);
   const navigate = useNavigate();
 
   // Load cart items from localStorage
-  const loadCart = () => {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    setCartItems(cart.length);
-    console.log("Cart items loaded:", cartItems);
+  // const loadCart = () => {
+  //   const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  //   setCartItems(cart.length);
+  //   console.log("Cart items loaded:", cartItems);
+  // };
+  const loadCart = useCallback(() => {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  setCartItems(cart.length);
+  console.log("Cart items loaded:", cart.length);
+}, []);
+useEffect(() => {
+  loadCart();
+
+  // Optional: listen for storage events (cart updated in another tab)
+  const handleStorage = (e) => {
+    if (e.key === "cart") loadCart();
   };
 
-  useEffect(() => {
-    loadCart();
+  window.addEventListener("storage", handleStorage);
+  return () => window.removeEventListener("storage", handleStorage);
+}, [loadCart]); 
+  // useEffect(() => {
+  //   loadCart();
 
-    // Optional: listen for storage events (cart updated in another tab)
-    const handleStorage = (e) => {
-      if (e.key === "cart") loadCart();
-    };
-    window.addEventListener("storage", handleStorage);
-    return () => window.removeEventListener("storage", handleStorage);
-  }, []);
+  //   // Optional: listen for storage events (cart updated in another tab)
+  //   const handleStorage = (e) => {
+  //     if (e.key === "cart") loadCart();
+  //   };
+  //   window.addEventListener("storage", handleStorage);
+  //   return () => window.removeEventListener("storage", handleStorage);
+  // }, []);
 
   /* CART */
   const handleCart = () => navigate("/cart");
