@@ -8,11 +8,11 @@ import { RiCustomerService2Line } from "react-icons/ri";
 
 export default function Features() {
   return (
-    <div className="container-card mt-10">
+    <div className=" mt-10">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         
         {/* Feature 1 */}
-        <div className="flex gap-3 p-4 border rounded-lg items-center bg-white">
+        <div className="flex gap-3 p-4 border rounded-lg items-center bg-white shadow-lg">
           <TbTruckDelivery className="w-10 h-10 text-primary" />
           <div>
             <h3 className="font-semibold text-gray-800">Fast Delivery</h3>
@@ -21,7 +21,7 @@ export default function Features() {
         </div>
 
         {/* Feature 2 */}
-        <div className="flex gap-3 p-4 border rounded-lg items-center bg-white">
+        <div className="flex gap-3 p-4 border rounded-lg items-center bg-white  shadow-lg">
           <MdVerifiedUser className="w-10 h-10 text-primary" />
           <div>
             <h3 className="font-semibold text-gray-800">100% Authentic</h3>
@@ -30,7 +30,7 @@ export default function Features() {
         </div>
 
         {/* Feature 3 */}
-        <div className="flex gap-3 p-4 border rounded-lg items-center bg-white">
+        <div className="flex gap-3 p-4 border rounded-lg items-center bg-white shadow-lg">
           <FaLeaf className="w-10 h-10 text-primary" />
           <div>
             <h3 className="font-semibold text-gray-800">Natural Ingredients</h3>
@@ -39,7 +39,7 @@ export default function Features() {
         </div>
 
         {/* Feature 4 */}
-        <div className="flex gap-3 p-4 border rounded-lg items-center bg-white">
+        <div className="flex gap-3 p-4 border rounded-lg items-center bg-white shadow-lg">
           <RiCustomerService2Line className="w-10 h-10 text-primary" />
           <div>
             <h3 className="font-semibold text-gray-800">Expert Support</h3>
@@ -48,7 +48,7 @@ export default function Features() {
         </div>
 
         {/* Feature 5 */}
-        <div className="flex gap-3 p-4 border rounded-lg items-center bg-white">
+        <div className="flex gap-3 p-4 border rounded-lg items-center bg-white shadow-lg">
           <GiReceiveMoney className="w-10 h-10 text-primary" />
           <div>
             <h3 className="font-semibold text-gray-800">Easy Payments</h3>
