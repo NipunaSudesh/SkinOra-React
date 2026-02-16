@@ -35,7 +35,7 @@ export default function AddCart({
   };
 
   return (
-    <div key={slug} className="flex gap-4 bg-white p-4 rounded-lg shadow">
+    <div key={slug} className="flex flex-col sm:flex-row gap-4 bg-white p-4 rounded-lg shadow">
       {/* CHECKBOX */}
       {mode === "cart" && (
         <input
@@ -47,8 +47,19 @@ export default function AddCart({
       )}
 
       {/* Product Image */}
-      <img src={imageUrl} alt={name} className="w-24 h-24 object-contain" />
+<div className="flex gap-4">
+        <img src={imageUrl} alt={name} className="w-24 h-24 object-contain" />
+                {stockStatus && (
+            <span
+              className={`inline-block sm:hidden h-8 px-3 py-1 rounded-xl text-white text-sm font-medium ${
+                stockStatus === "IN_STOCK" ? "bg-green-500" : "bg-red-500"
+              }`}
+            >
+              {stockStatus.toLowerCase().replace("_", " ")}
+            </span>
+          )}
 
+</div>
       <div className="flex-1">
         {/* Category & Brand */}
         <p className="text-xs text-gray-700">
@@ -62,7 +73,7 @@ export default function AddCart({
           </h3>
           {stockStatus && (
             <span
-              className={`px-3 py-1 rounded-xl text-white text-sm font-medium ${
+              className={`hidden sm:inline-block px-3 py-1 rounded-xl text-white text-sm font-medium ${
                 stockStatus === "IN_STOCK" ? "bg-green-500" : "bg-red-500"
               }`}
             >
