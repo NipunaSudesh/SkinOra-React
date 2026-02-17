@@ -148,7 +148,7 @@ export default function AllProducts() {
           </p>
     {/* Mobile horizontal filter */}
     {/* <MobileFilterBar filters={filters} setFilters={setFilters} /> */}
-          <div className="flex flex-wrap justify-center mt-6 gap-4">
+          <div className="flex flex-wrap justify-center mt-6 gap-2">
             {currentProducts.length > 0 ? (
               currentProducts.map((product) => (
                 <ProductCart
