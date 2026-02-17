@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { FaShare } from "react-icons/fa6";
 import { CiStar } from "react-icons/ci";
 import { FaShoppingCart } from "react-icons/fa";
+import { CartContext } from "../../context/CartContext";
+
+const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
 
 export default function ProductCart({
   id,
@@ -17,7 +20,8 @@ export default function ProductCart({
   reviewCount = 0,
 }) {
   const [liked, setLiked] = useState(false);
-  const navigate =useNavigate();
+  const navigate = useNavigate();
+  const { addToCartLocal } = useContext(CartContext); // Use CartContext
 
   const handleLike = (e) => {
     e.preventDefault();
@@ -29,11 +33,51 @@ export default function ProductCart({
     e.preventDefault();
     e.stopPropagation();
   };
-const handleCart = (e) => {
-    e.preventDefault();    
-  e.stopPropagation(); 
-  navigate("/cart");
-};
+
+  const handleCart = async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+      return;
+    }
+
+    // 1️Optimistically update cart count immediately
+    addToCartLocal({
+      _id: id,
+      slug,
+      price: NPrice,
+      name: productName,
+      imageUrl: imgUrl,
+      qty: 1,
+    });
+
+    try {
+      // 2️ Call backend API
+      const res = await fetch(`${SKINORA_API_URL}/api/cart/add`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          productId: id,
+          qty: 1,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to add to cart");
+      }
+      // Optional: navigate("/cart"); // or stay on page
+    } catch (error) {
+      console.error("Add to cart error:", error.message);
+      alert("Failed to add product to cart.");
+    }
+  };
+
   return (
     <Link to={`/product/slug/${slug}`} className="group w-64">
       <div className="relative flex flex-col bg-white rounded-xl shadow-md border border-gray-300
@@ -95,23 +139,19 @@ const handleCart = (e) => {
                   i < rating ? "text-secondary" : "text-gray-300"
                 }`}
               />
-            ))}<p className="text-sm text-gray-500">({reviewCount} reviews)</p>
+            ))}
+            <p className="text-sm text-gray-500">({reviewCount} reviews)</p>
           </div>
 
           {/* Price */}
           <div className="flex items-end gap-3 mt-2">
-            {OPrice && (
-              <p className="text-sm text-gray-400 line-through">
-                Rs. {OPrice}
-              </p>
-            )}
-            <p className="text-xl font-bold text-primary">
-              Rs. {NPrice}
-            </p>
+            {OPrice && <p className="text-sm text-gray-400 line-through">Rs. {OPrice}</p>}
+            <p className="text-xl font-bold text-primary">Rs. {NPrice}</p>
           </div>
 
-          {/* Button */}
-          <button onClick={handleCart}
+          {/* Add to Cart Button */}
+          <button
+            onClick={handleCart}
             className="mt-4 flex items-center justify-center gap-2
                        bg-secondary hover:bg-primary
                        text-white py-2 rounded-lg

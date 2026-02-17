@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PublicLayout from "./Components/layout/PublicLayout";
-import HeartCursor from "./Components/layout/HeartCursor";
-
+// import HeartCursor from "./Components/layout/HeartCursor";
+import CheckOut from "./Pages/CheckOut";
 import Home from "./Pages/home/Home";
 import AllCategories from "./Pages/AllCategories";
 import CategoryPage from "./Pages/singleCategory/CategoryPage";
@@ -15,11 +15,14 @@ import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import Team from "./Pages/Terms";
+import ThankYou from "./Pages/ThankYou";
+import ErrorPage from "./Pages/ErrorPage";
+import SearchPage from "./Pages/SearchPage";
 
 function App() {
   return (
     <>
-      <HeartCursor />
+      {/* <HeartCursor /> */}
 
       <Router>
         <Routes>
@@ -32,18 +35,22 @@ function App() {
             <Route path="/product-category/:slug" element={<CategoryPage />} />
             <Route path="/product/slug/:slug" element={<SingleProductPage />} />
             <Route path="/cart" element={<AddToCart />} />
-            <Route path="/checkout" element={<AddToCart />} />
+            <Route path="/checkout" element={<CheckOut />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<Team />} />
+            <Route path="/thankyou" element={<ThankYou />} />
+           <Route path="/search" element={<SearchPage />} />
           </Route>
+
 
           {/* AUTH ROUTES (NO LAYOUT) */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-
+          <Route path="/register" element={<Register />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Router>
     </>

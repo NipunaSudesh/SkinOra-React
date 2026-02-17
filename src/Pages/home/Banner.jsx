@@ -67,7 +67,7 @@ export default function Banner() {
             <img
               src={item.img}
               alt={item.alt}
-              className="w-full h-[100px] sm:h-[200px] md:h-[240px] lg:h-[400px] object-cover rounded-lg "
+              className="w-full h-[150px] sm:h-[250px] md:h-[300px] lg:h-[450px] object-cover rounded-lg "
             />
           </SwiperSlide>
         ))}
