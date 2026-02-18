@@ -38,7 +38,7 @@ export default function Products() {
       />
 
       <div className="flex gap-2 mt-8 justify-center flex-wrap">
-        {products.slice(0, 15).map((product) => (
+        {products.slice(0, 10).map((product) => (
           <ProductCart
             key={product._id}
             id={product._id}
