@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-
+const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ const fetchOrders = useCallback(async () => {
       const token = localStorage.getItem("token");
       if (!token) throw new Error("No token found");
 
-      const res = await fetch("http://localhost:5000/api/auth/my-orders", {
+      const res = await fetch(`${SKINORA_API_URL}/api/auth/my-orders`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
