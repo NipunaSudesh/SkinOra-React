@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import {Header} from "../Components/Theme/Header"
+
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -19,8 +19,9 @@ export default function Profile() {
     ? user.image
     : `https://api.dicebear.com/7.x/initials/svg?seed=${user?.name || "User"}`;
 
-  const fetchOrders = async () => {
+const fetchOrders = useCallback(async () => {
     if (orders.length > 0) return;
+
     setLoadingOrders(true);
     setOrdersError(null);
 
@@ -56,13 +57,13 @@ export default function Profile() {
     } finally {
       setLoadingOrders(false);
     }
-  };
+  }, [orders.length, navigate]);
 
   useEffect(() => {
     if (activeTab === "orders") {
       fetchOrders();
     }
-  }, [activeTab]);
+  }, [activeTab, fetchOrders]);
 
   const calculateOrderTotals = (order) => {
     const subtotal = order.items?.reduce((sum, item) => {
