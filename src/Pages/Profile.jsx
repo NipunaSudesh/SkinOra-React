@@ -10,7 +10,7 @@ export default function Profile() {
   const [showEdit, setShowEdit] = useState(false);
   const [message, setMessage] = useState("");
   const [activeTab, setActiveTab] = useState("profile");
-
+ const [selectedOrder, setSelectedOrder] = useState(null);
   const [orders, setOrders] = useState([]);
   const [loadingOrders, setLoadingOrders] = useState(false);
   const [ordersError, setOrdersError] = useState(null);
@@ -18,6 +18,8 @@ export default function Profile() {
   const avatarUrl = user?.image
     ? user.image
     : `https://api.dicebear.com/7.x/initials/svg?seed=${user?.name || "User"}`;
+  const openOrderDetails = (order) => setSelectedOrder(order);
+  const closeOrderDetails = () => setSelectedOrder(null);
 
 const fetchOrders = useCallback(async () => {
     if (orders.length > 0) return;
@@ -79,6 +81,17 @@ const fetchOrders = useCallback(async () => {
 
     return { subtotal, shipping, grandTotal };
   };
+const calculateSubtotal = (order) =>
+  order.items?.reduce((sum, item) => sum + item.qty * (item.price || 0), 0) || 0;
+
+const totalItemQuantity = (order) =>
+  order.items?.reduce((sum, item) => sum + (item.qty || 1), 0) || 0;
+
+const calculateShipping = (order) => totalItemQuantity(order) * 350;
+
+const calculateGrandTotal = (order) =>
+  order.totalAmount || calculateSubtotal(order) + calculateShipping(order);
+
 
   const handleLogout = () => {
     setMessage("Logged out successfully ✅");
@@ -285,10 +298,18 @@ const fetchOrders = useCallback(async () => {
                             <span>LKR {shipping.toLocaleString()}</span>
                           </div>
                           <div className="flex justify-between pt-4 border-t font-medium text-base">
-                            <span>Total Amount</span>
+                                <div >
+                              <span>Total Amount : </span>
                             <span className="text-gray-900 text-lg">
-                              LKR {grandTotal.toLocaleString()}
+                              LKR {grandTotal.toLocaleString()}.00
                             </span>
+                                  </div>
+                                                    <button
+                          onClick={() => openOrderDetails(order)}
+                          className="text-primary underline"
+                        >
+                          View Details →
+                        </button>
                           </div>
                         </div>
                       </div>
@@ -300,6 +321,148 @@ const fetchOrders = useCallback(async () => {
           )}
         </div>
       </div>
+      
+      {/* ================= ORDER DETAILS MODAL ================= */}
+   {selectedOrder && (
+  <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4 overflow-y-auto">
+    <div className="bg-white rounded-xl p-6 md:p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl">
+      
+      {/* Header */}
+      <div className="flex justify-between items-center mb-6">
+        <h3 className="text-2xl font-bold text-gray-800">
+          Order Details #{selectedOrder._id?.slice(-8)}
+        </h3>
+        <button
+          onClick={closeOrderDetails}
+          className="text-gray-500 hover:text-gray-800 text-3xl leading-none"
+        >
+          ×
+        </button>
+      </div>
+
+      <div className="space-y-6">
+        {/* Order Info */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+          <div>
+            <p className="text-gray-600">Placed on</p>
+            <p className="font-medium">
+              {new Date(
+                selectedOrder.placedAt || selectedOrder.createdAt
+              ).toLocaleString("en-GB", {
+                dateStyle: "medium",
+                timeStyle: "short",
+              })}
+            </p>
+          </div>
+
+          <div className="flex justify-between">
+            <p className="text-gray-600">Status</p>
+            <span
+              className={`inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase ${
+                selectedOrder.status === "pending"
+                  ? "bg-yellow-100 text-yellow-800"
+                  : selectedOrder.status === "processing"
+                  ? "bg-blue-100 text-blue-800"
+                  : selectedOrder.status === "shipped"
+                  ? "bg-indigo-100 text-indigo-800"
+                  : selectedOrder.status === "delivered"
+                  ? "bg-green-100 text-green-800"
+                  : "bg-gray-100 text-gray-800"
+              }`}
+            >
+              {selectedOrder.status}
+            </span>
+          </div>
+        </div>
+
+        {/* Items */}
+        <div>
+          <h4 className="text-lg font-semibold mb-3">Items</h4>
+          <div className="space-y-4">
+            {selectedOrder.items?.map((item, i) => (
+              <div
+                key={item._id || i}
+                className="flex justify-between items-center border-b pb-3 last:border-b-0"
+              >
+                <div className="flex-1">
+                  <p className="font-medium">
+                    {item.product?.name ||
+                      `Product ${i + 1} (name unavailable)`}
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    Qty: {item.qty} × LKR{" "}
+                    {item.price?.toLocaleString() || "—"}
+                  </p>
+                </div>
+                <div className="text-right font-medium">
+                  LKR{" "}
+                  {(item.qty * (item.price || 0)).toLocaleString()}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Shipping Info */}
+        {selectedOrder.shippingInfo && (
+          <div>
+            <h4 className="text-lg font-semibold mb-3">
+              Shipping Information
+            </h4>
+            <div className="text-sm space-y-1 text-gray-700">
+              <p>
+                {selectedOrder.shippingInfo.firstName}{" "}
+                {selectedOrder.shippingInfo.lastName}
+              </p>
+              <p>{selectedOrder.shippingInfo.address}</p>
+              <p>Phone: {selectedOrder.shippingInfo.phone}</p>
+              <p>Email: {selectedOrder.shippingInfo.email}</p>
+            </div>
+          </div>
+        )}
+
+        {/* Totals */}
+        <div className="pt-4 border-t space-y-2 text-sm">
+          <div className="flex justify-between text-gray-700">
+            <span>Subtotal</span>
+            <span>
+              LKR {calculateSubtotal(selectedOrder).toLocaleString()}
+            </span>
+          </div>
+
+          <div className="flex justify-between text-gray-700">
+            <span>
+              Shipping Fee (LKR 350 × {totalItemQuantity(selectedOrder)} item
+              {totalItemQuantity(selectedOrder) !== 1 ? "s" : ""})
+            </span>
+            <span>
+              LKR {calculateShipping(selectedOrder).toLocaleString()}
+            </span>
+          </div>
+
+          <div className="flex justify-between pt-3 border-t font-medium text-base">
+            <span>Total Amount</span>
+            <span className="text-gray-900 text-lg">
+              LKR {calculateGrandTotal(selectedOrder).toLocaleString()}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="mt-8 flex justify-end">
+        <button
+          onClick={closeOrderDetails}
+          className="px-6 py-2 bg-primary hover:bg-secondary text-white rounded-lg transition"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
+
 
       {/* Edit Modal */}
       {showEdit && (
