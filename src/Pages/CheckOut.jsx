@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import AddCart from "../Components/cart/AddCart";
 import TextInput from "../Components/Theme/TextInput";
+const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
 
 export default function Checkout() {
   const { state } = useLocation();
@@ -64,7 +65,7 @@ export default function Checkout() {
         // You can add more fields if needed (paymentMethod, etc.)
       };
 
-      const response = await fetch("http://localhost:5000/api/auth/place-order", {
+      const response = await fetch(`${SKINORA_API_URL}/api/auth/place-order`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
