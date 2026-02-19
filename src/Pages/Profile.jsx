@@ -322,7 +322,7 @@ const calculateGrandTotal = (order) =>
         </div>
       </div>
       
-      {/* ================= ORDER DETAILS MODAL ================= */}
+     {/* ORDER DETAILS MODAL   */}
    {selectedOrder && (
   <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4 overflow-y-auto">
     <div className="bg-white rounded-xl p-6 md:p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl">
@@ -342,7 +342,7 @@ const calculateGrandTotal = (order) =>
 
       <div className="space-y-6">
         {/* Order Info */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+        <div className=" grid-cols-1 md:grid-cols-1 gap-4 text-sm flex justify-between">
           <div>
             <p className="text-gray-600">Placed on</p>
             <p className="font-medium">
@@ -354,11 +354,8 @@ const calculateGrandTotal = (order) =>
               })}
             </p>
           </div>
-
-          <div className="flex justify-between">
-            <p className="text-gray-600">Status</p>
-            <span
-              className={`inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase ${
+ <span
+              className={`inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-semibold uppercase text-center ${
                 selectedOrder.status === "pending"
                   ? "bg-yellow-100 text-yellow-800"
                   : selectedOrder.status === "processing"
@@ -372,7 +369,6 @@ const calculateGrandTotal = (order) =>
             >
               {selectedOrder.status}
             </span>
-          </div>
         </div>
 
         {/* Items */}
@@ -391,12 +387,12 @@ const calculateGrandTotal = (order) =>
                   </p>
                   <p className="text-sm text-gray-600">
                     Qty: {item.qty} × LKR{" "}
-                    {item.price?.toLocaleString() || "—"}
+                    {item.price?.toLocaleString() || "—"}.00
                   </p>
                 </div>
                 <div className="text-right font-medium">
                   LKR{" "}
-                  {(item.qty * (item.price || 0)).toLocaleString()}
+                  {(item.qty * (item.price || 0)).toLocaleString()}.00
                 </div>
               </div>
             ))}
@@ -426,24 +422,24 @@ const calculateGrandTotal = (order) =>
           <div className="flex justify-between text-gray-700">
             <span>Subtotal</span>
             <span>
-              LKR {calculateSubtotal(selectedOrder).toLocaleString()}
+              LKR {calculateSubtotal(selectedOrder).toLocaleString()}.00
             </span>
           </div>
 
           <div className="flex justify-between text-gray-700">
             <span>
-              Shipping Fee (LKR 350 × {totalItemQuantity(selectedOrder)} item
+              Shipping Fee (LKR 350.00 × {totalItemQuantity(selectedOrder)} item
               {totalItemQuantity(selectedOrder) !== 1 ? "s" : ""})
             </span>
             <span>
-              LKR {calculateShipping(selectedOrder).toLocaleString()}
+              LKR {calculateShipping(selectedOrder).toLocaleString()}.00
             </span>
           </div>
 
           <div className="flex justify-between pt-3 border-t font-medium text-base">
             <span>Total Amount</span>
             <span className="text-gray-900 text-lg">
-              LKR {calculateGrandTotal(selectedOrder).toLocaleString()}
+              LKR {calculateGrandTotal(selectedOrder).toLocaleString()}.00
             </span>
           </div>
         </div>
