@@ -274,11 +274,11 @@ const calculateGrandTotal = (order) =>
                                     {item.product?.name || `Product ${i + 1} (name unavailable)`}
                                   </p>
                                   <p className="text-gray-600 mt-1">
-                                    Qty: {item.qty} × LKR {item.price?.toLocaleString() || "—"}
+                                    Qty: {item.qty} × LKR {item.price?.toLocaleString() || "—"}.00
                                   </p>
                                 </div>
                                 <div className="text-right font-medium text-gray-900 whitespace-nowrap">
-                                  LKR {(item.qty * (item.price || 0)).toLocaleString()}
+                                  LKR {(item.qty * (item.price || 0)).toLocaleString()}.00
                                 </div>
                               </div>
                             ))}
@@ -288,14 +288,14 @@ const calculateGrandTotal = (order) =>
                         <div className="pt-2 border-t space-y-2 text-sm">
                           <div className="flex justify-between text-gray-700">
                             <span>Subtotal</span>
-                            <span>LKR {subtotal.toLocaleString()}</span>
+                            <span>LKR {subtotal.toLocaleString()}.00</span>
                           </div>
                           <div className="flex justify-between text-gray-700">
                             <span>
-                              Shipping Fee (LKR 350 × {totalItemQuantity} item
+                              Shipping Fee (LKR 350.00 × {totalItemQuantity} item
                               {totalItemQuantity !== 1 ? "s" : ""})
                             </span>
-                            <span>LKR {shipping.toLocaleString()}</span>
+                            <span>LKR {shipping.toLocaleString()}.00</span>
                           </div>
                           <div className="flex justify-between pt-4 border-t font-medium text-base">
                                 <div >
