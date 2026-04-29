@@ -48,23 +48,13 @@ export default function CustomerTestimonials() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-center ">
           {testimonials.map((item, index) => (
             <div key={index} className="flex flex-col items-center">
-              <h3 className="text-lg font-semibold mb-4">
-                {item.title}
-              </h3>
+              <h3 className="text-lg font-semibold mb-4"> {item.title}    </h3>
 
-              <p className="text-sm text-gray-600 mb-6 max-w-xs">
-                {item.message}
-              </p>
+              <p className="text-sm text-gray-600 mb-6 max-w-xs">  {item.message} </p>
 
-              <img
-                src={item.image}
-                alt={item.name}
-                className="w-20 h-20 rounded-full object-cover mb-4"
-              />
+              <img src={item.image} alt={item.name} className="w-20 h-20 rounded-full object-cover mb-4"   />
 
-              <p className="font-semibold text-sm tracking-wide mb-2 uppercase">
-                {item.name}
-              </p>
+              <p className="font-semibold text-sm tracking-wide mb-2 uppercase">{item.name} </p>
 
               {/* Stars */}
               <div className="flex gap-1 text-yellow-400">

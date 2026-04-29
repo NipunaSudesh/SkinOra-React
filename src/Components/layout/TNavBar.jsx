@@ -42,39 +42,6 @@ useEffect(() => {
   window.addEventListener("storage", handleStorage);
   return () => window.removeEventListener("storage", handleStorage);
 }, [loadCart]);
-  // Load cart items from localStorage
-  // const loadCart = () => {
-  //   const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  //   setCartItems(cart.length);
-  //   console.log("Cart items loaded:", cartItems);
-  // };
-//   const loadCart = useCallback(() => {
-//   const cart = JSON.parse(localStorage.getItem("cart")) || [];
-//   setCartItems(cart.length);
-//   console.log("Cart items loaded:", cart.length);
-//   console.log("Cart items loaded:", cartItems);
-// }, []);
-// useEffect(() => {
-//   loadCart();
-
-//   // Optional: listen for storage events (cart updated in another tab)
-//   const handleStorage = (e) => {
-//     if (e.key === "cart") loadCart();
-//   };
-
-//   window.addEventListener("storage", handleStorage);
-//   return () => window.removeEventListener("storage", handleStorage);
-// }, [loadCart]); 
-  // useEffect(() => {
-  //   loadCart();
-
-  //   // Optional: listen for storage events (cart updated in another tab)
-  //   const handleStorage = (e) => {
-  //     if (e.key === "cart") loadCart();
-  //   };
-  //   window.addEventListener("storage", handleStorage);
-  //   return () => window.removeEventListener("storage", handleStorage);
-  // }, []);
 
   /* CART */
   const handleCart = () => navigate("/cart");

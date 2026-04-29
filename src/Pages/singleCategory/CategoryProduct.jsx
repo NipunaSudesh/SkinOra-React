@@ -16,12 +16,7 @@ export default function CategoryProduct() {
   const [openFilter, setOpenFilter] = useState(false);
 
   const [filters, setFilters] = useState({
-    brands: [],
-    country: "",
-    inStock: false,
-    minPrice: "",
-    maxPrice: "",
-  });
+    brands: [],  country: "",  inStock: false,  minPrice: "",  maxPrice: "", });
 
   /* FETCH PRODUCTS */
   useEffect(() => {
@@ -85,19 +80,14 @@ export default function CategoryProduct() {
 
       {/* PRODUCTS */}
       <div className="w-full lg:w-4/5">
-        <Header
-          Title={slug.replace("-", " ").toUpperCase()}
-          discription="Premium Skincare And Beauty, Chosen Just For You"
+        <Header  Title={slug.replace("-", " ").toUpperCase()}
+         discription="Premium Skincare And Beauty, Chosen Just For You"
         />
 
         {/* MOBILE FILTER BUTTON */}
         <div className="lg:hidden flex justify-center px-3 mb-3 w-full">
           <button
-            onClick={() => setOpenFilter(true)}
-            className="px-4 py-2 border rounded-lg text-sm bg-primary hover:bg-secondary text-white font-medium w-full"
-          >
-            Filters
-          </button>
+            onClick={() => setOpenFilter(true)}     className="px-4 py-2 border rounded-lg text-sm bg-primary hover:bg-secondary text-white font-medium w-full"  > Filters </button>
         </div>
 
         {/* MOBILE FILTER DRAWER */}
@@ -113,8 +103,7 @@ export default function CategoryProduct() {
         <p className="text-gray-600 mx-2">
           Showing{" "}
           <span className="text-secondary">
-            {startIndex + 1}–
-            {Math.min(startIndex + PRODUCTS_PER_PAGE, filteredProducts.length)}
+            {startIndex + 1}–{Math.min(startIndex + PRODUCTS_PER_PAGE, filteredProducts.length)}
           </span>{" "}
           of{" "}
           <span className="text-secondary">
@@ -151,8 +140,7 @@ export default function CategoryProduct() {
             <button
               disabled={currentPage === 1}
               onClick={() => setCurrentPage((p) => p - 1)}
-              className="px-4 py-2 bg-primary text-white rounded disabled:opacity-40"
-            >
+              className="px-4 py-2 bg-primary text-white rounded disabled:opacity-40" >
               Previous
             </button>
 
@@ -163,9 +151,7 @@ export default function CategoryProduct() {
                 className={`w-10 h-10 rounded-full border ${
                   currentPage === i + 1
                     ? "bg-secondary text-white"
-                    : "bg-white"
-                }`}
-              >
+                    : "bg-white"      }`} >
                 {i + 1}
               </button>
             ))}

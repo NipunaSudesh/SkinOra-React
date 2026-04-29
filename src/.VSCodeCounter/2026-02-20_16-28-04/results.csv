@@ -1,0 +1,54 @@
+"filename", "language", "JavaScript", "JavaScript JSX", "XML", "PostCSS", "comment", "blank", "total"
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\App.css", "PostCSS", 0, 0, 0, 70, 1, 11, 82
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\App.js", "JavaScript", 53, 0, 0, 0, 1, 7, 61
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\App.test.js", "JavaScript", 7, 0, 0, 0, 0, 2, 9
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\Theme\Button.jsx", "JavaScript JSX", 0, 11, 0, 0, 0, 3, 14
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\Theme\Header.jsx", "JavaScript JSX", 0, 9, 0, 0, 0, 2, 11
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\Theme\TextInput.jsx", "JavaScript JSX", 0, 12, 0, 0, 0, 2, 14
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\Theme\Textarea.jsx", "JavaScript JSX", 0, 18, 0, 0, 0, 3, 21
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\Theme\Typography.jsx", "JavaScript JSX", 0, 73, 0, 0, 4, 8, 85
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\cart\AddCart.jsx", "JavaScript JSX", 0, 92, 0, 0, 7, 13, 112
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\cart\CategoryCart.jsx", "JavaScript JSX", 0, 25, 0, 0, 3, 6, 34
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\cart\ProductCart.jsx", "JavaScript JSX", 0, 116, 0, 0, 9, 19, 144
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\layout\BNavBar.jsx", "JavaScript JSX", 0, 32, 0, 0, 1, 3, 36
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\layout\Footer.jsx", "JavaScript JSX", 0, 83, 0, 0, 7, 15, 105
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\layout\HeartCursor.jsx", "JavaScript JSX", 0, 35, 0, 0, 2, 15, 52
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\layout\NavBar.jsx", "JavaScript JSX", 0, 11, 0, 0, 2, 3, 16
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\layout\PublicLayout.jsx", "JavaScript JSX", 0, 15, 0, 0, 1, 4, 20
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\layout\TNavBar.jsx", "JavaScript JSX", 0, 157, 0, 0, 9, 18, 184
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\About.jsx", "JavaScript JSX", 0, 44, 0, 0, 2, 7, 53
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\AddToCart.jsx", "JavaScript JSX", 0, 156, 0, 0, 3, 33, 192
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\AllCategories.jsx", "JavaScript JSX", 0, 43, 0, 0, 1, 4, 48
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\AllProducts.jsx", "JavaScript JSX", 0, 168, 0, 0, 19, 24, 211
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\CheckOut.jsx", "JavaScript JSX", 0, 237, 0, 0, 11, 28, 276
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\Contact.jsx", "JavaScript JSX", 0, 74, 0, 0, 3, 15, 92
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\ErrorPage.jsx", "JavaScript JSX", 0, 37, 0, 0, 3, 8, 48
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\Login.jsx", "JavaScript JSX", 0, 124, 0, 0, 6, 18, 148
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\PrivacyPolicy.jsx", "JavaScript JSX", 0, 49, 0, 0, 0, 8, 57
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\Profile.jsx", "JavaScript JSX", 0, 448, 0, 0, 13, 49, 510
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\Register.jsx", "JavaScript JSX", 0, 155, 0, 0, 6, 25, 186
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\SearchPage.jsx", "JavaScript JSX", 0, 58, 0, 0, 2, 10, 70
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\Terms.jsx", "JavaScript JSX", 0, 84, 0, 0, 7, 10, 101
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\ThankYou.jsx", "JavaScript JSX", 0, 26, 0, 0, 0, 7, 33
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\home\AboutSkinOra.jsx", "JavaScript JSX", 0, 17, 0, 0, 0, 2, 19
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\home\Banner.jsx", "JavaScript JSX", 0, 57, 0, 0, 30, 10, 97
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\home\Categorys.jsx", "JavaScript JSX", 0, 84, 0, 0, 5, 10, 99
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\home\CustomerTestimonials.jsx", "JavaScript JSX", 0, 60, 0, 0, 3, 11, 74
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\home\Features.jsx", "JavaScript JSX", 0, 49, 0, 0, 5, 9, 63
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\home\Home.jsx", "JavaScript JSX", 0, 19, 0, 0, 0, 3, 22
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\home\Products.jsx", "JavaScript JSX", 0, 50, 0, 0, 2, 9, 61
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\singleCategory\Banner.jsx", "JavaScript JSX", 0, 41, 0, 0, 2, 10, 53
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\singleCategory\CategoryPage.jsx", "JavaScript JSX", 0, 13, 0, 0, 0, 4, 17
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\singleCategory\CategoryProduct.jsx", "JavaScript JSX", 0, 137, 0, 0, 11, 24, 172
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\singleCategory\MobileFilterDrawer.jsx", "JavaScript JSX", 0, 124, 0, 0, 7, 12, 143
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\singleCategory\ProductFilter.jsx", "JavaScript JSX", 0, 112, 0, 0, 5, 10, 127
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\singleProduct\SingleProduct.jsx", "JavaScript JSX", 0, 235, 0, 0, 9, 52, 296
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\assets\images\index.jsx", "JavaScript JSX", 0, 20, 0, 0, 0, 5, 25
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\assets\images\logo.svg", "XML", 0, 0, 338, 0, 0, 1, 339
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\context\CartContext.js", "JavaScript", 47, 0, 0, 0, 2, 9, 58
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\index.css", "PostCSS", 0, 0, 0, 72, 5, 9, 86
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\index.js", "JavaScript", 15, 0, 0, 0, 3, 3, 21
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\logo.svg", "XML", 0, 0, 1, 0, 0, 0, 1
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\reportWebVitals.js", "JavaScript", 12, 0, 0, 0, 0, 2, 14
+"d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\setupTests.js", "JavaScript", 1, 0, 0, 0, 4, 1, 6
+"Total", "-", 135, 3410, 339, 142, 216, 576, 4818

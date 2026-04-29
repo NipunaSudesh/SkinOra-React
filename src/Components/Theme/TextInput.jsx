@@ -1,12 +1,7 @@
 import React from "react";
 
 export default function TextInput({ className, size = "normal", ...props }) {
-  const sizeClasses = {
-    normal: "py-3 px-5",
-    large: "py-4 px-6",
-    medium: "py-2 px-5",
-    small: "py-1.5 px-3",
-    ex_small: "py-1.5 px-3 text-sm",
+  const sizeClasses = { normal: "py-3 px-5",  large: "py-4 px-6",  medium: "py-2 px-5", small: "py-1.5 px-3", ex_small: "py-1.5 px-3 text-sm",
   };
   const sizeClass = size ? sizeClasses[size] : "";
   return (

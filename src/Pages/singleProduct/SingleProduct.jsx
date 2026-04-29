@@ -174,10 +174,7 @@ const HandleCheckOut = () => {
                     className={`text-xl ${
                       i < product.rating
                         ? "text-yellow-400"
-                        : "text-gray-300"
-                    }`}
-                  />
-                ))}
+                        : "text-gray-300" }`} /> ))}
                 <span className="text-sm text-gray-500 ml-2">
                   ({product.reviewCount} reviews)
                 </span>

@@ -1,20 +1,11 @@
 import React from "react";
 
 const TextArea = ({
-  placeholder,
-  className,
-  size = "normal",
-  rows,
-  resize,
-  ...props
+  placeholder, className, size = "normal", rows, resize, ...props
 }) => {
   const resizeStyle = resize ? `resize-${resize}` : "resize-none";
   const sizeClasses = {
-    normal: "py-3 px-5",
-    large: "py-4 px-6",
-    medium: "py-2 px-5",
-    small: "py-1.5 px-3",
-  };
+    normal: "py-3 px-5", large: "py-4 px-6", medium: "py-2 px-5", small: "py-1.5 px-3",  };
   const sizeClass = size ? sizeClasses[size] : "";
   return (
     <textarea

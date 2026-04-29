@@ -9,16 +9,7 @@ import { CartContext } from "../../context/CartContext";
 const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
 
 export default function ProductCart({
-  id,
-  slug,
-  OPrice,
-  NPrice,
-  imgUrl,
-  productName,
-  productDesc,
-  rating = 0,
-  reviewCount = 0,
-}) {
+  id, slug,OPrice,NPrice,imgUrl,productName,productDesc,rating = 0,reviewCount = 0}) {
   const [liked, setLiked] = useState(false);
   const navigate = useNavigate();
   const { addToCartLocal } = useContext(CartContext); // Use CartContext
@@ -46,13 +37,7 @@ export default function ProductCart({
 
     // 1️Optimistically update cart count immediately
     addToCartLocal({
-      _id: id,
-      slug,
-      price: NPrice,
-      name: productName,
-      imageUrl: imgUrl,
-      qty: 1,
-    });
+      _id: id, slug, price: NPrice,name: productName,imageUrl: imgUrl,qty: 1, });
 
     try {
       // 2️ Call backend API
@@ -80,28 +65,22 @@ export default function ProductCart({
 
   return (
     <Link to={`/product/slug/${slug}`} className="group w-64">
-      <div className="relative flex flex-col bg-white rounded-xl shadow-md border border-gray-300
-                      hover:shadow-2xl transition-all duration-300">
+      <div className="relative flex flex-col bg-white rounded-xl shadow-md border border-gray-300 hover:shadow-2xl transition-all duration-300">
 
         {/* Image */}
         <div className="relative w-full h-60 overflow-hidden rounded-t-xl">
           <img
             src={imgUrl}
             alt={productName}
-            className="w-full h-full object-cover
-                       transition-transform duration-500
-                       group-hover:scale-110"
+            className="w-full h-full object-cover transition-transform duration-500  group-hover:scale-110"
           />
 
           {/* Hover Actions */}
-          <div className="absolute inset-0 flex items-center justify-center
-                          bg-black/50 opacity-0 group-hover:opacity-100
-                          transition-opacity duration-300">
+          <div className="absolute inset-0 flex items-center justify-center  bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <div className="flex gap-4">
               <button
                 onClick={handleLike}
-                className="p-3 bg-white rounded-full shadow
-                           hover:scale-110 transition"
+                className="p-3 bg-white rounded-full shadow  hover:scale-110 transition"
               >
                 <FaHeart
                   size={20}
@@ -111,8 +90,7 @@ export default function ProductCart({
 
               <button
                 onClick={handleShare}
-                className="p-3 bg-white rounded-full shadow
-                           hover:scale-110 transition"
+                className="p-3 bg-white rounded-full shadow  hover:scale-110 transition"
               >
                 <FaShare size={18} className="text-gray-600" />
               </button>
@@ -152,11 +130,8 @@ export default function ProductCart({
           {/* Add to Cart Button */}
           <button
             onClick={handleCart}
-            className="mt-4 flex items-center justify-center gap-2
-                       bg-secondary hover:bg-primary
-                       text-white py-2 rounded-lg
-                       font-semibold shadow
-                       transition active:scale-95"
+            className="mt-4 flex items-center justify-center gap-2 bg-secondary hover:bg-primary text-white py-2 rounded-lg
+ font-semibold shadow transition active:scale-95"
           >
             <FaShoppingCart size={16} />
             Add To Cart

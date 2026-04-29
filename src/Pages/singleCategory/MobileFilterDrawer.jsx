@@ -24,25 +24,10 @@ const COUNTRIES = [
 ];
 
 const BRANDS = [
-  "L'Oréal Men Expert",
-  "Gillette",
-  "Nivea",
-  "Dove",
-  "CeraVe",
-  "Cetaphil",
-  "Garnier",
-  "OGX",
-  "Old Spice",
-  "Brut",
-];
+  "L'Oréal Men Expert","Gillette","Nivea", "Dove", "CeraVe","Cetaphil","Garnier", "OGX", "Old Spice", "Brut",];
 
 export default function MobileFilterDrawer({
-  isOpen,
-  onClose,
-  filters,
-  setFilters,
-   hideCategory = false,
-}) {
+  isOpen, onClose, filters, setFilters, hideCategory = false,}) {
   if (!isOpen) return null;
 
   const toggleBrand = (brand) => {
@@ -56,11 +41,7 @@ export default function MobileFilterDrawer({
 
   const clearAll = () => {
     setFilters({
-      category: "",
-      country: "",
-      brands: [],
-      inStock: false,
-    });
+      category: "",  country: "",  brands: [], inStock: false,  });
   };
 
   return (
@@ -89,9 +70,7 @@ export default function MobileFilterDrawer({
             className="w-full border rounded-lg px-3 py-2"
             value={filters.category}
             onChange={(e) =>
-              setFilters({ ...filters, category: e.target.value })
-            }
-          >
+              setFilters({ ...filters, category: e.target.value })}>
             <option value="">All Categories</option>
             {CATEGORIES.map((cat) => (
               <option key={cat.slug} value={cat.slug}>
@@ -107,9 +86,7 @@ export default function MobileFilterDrawer({
     className="w-full border rounded-lg px-3 py-2"
     value={filters.country || ""}
     onChange={(e) =>
-      setFilters({ ...filters, country: e.target.value })
-    }
-  >
+      setFilters({ ...filters, country: e.target.value })}>
     <option value="">All Countries</option>
     {COUNTRIES.map((country) => (
       <option key={country.code} value={country.code}>
@@ -128,8 +105,7 @@ export default function MobileFilterDrawer({
                 <input
                   type="checkbox"
                   checked={filters.brands.includes(brand)}
-                  onChange={() => toggleBrand(brand)}
-                />
+                  onChange={() => toggleBrand(brand)}/>
                 {brand}
               </label>
             ))}
@@ -144,9 +120,7 @@ export default function MobileFilterDrawer({
               type="checkbox"
               checked={filters.inStock}
               onChange={(e) =>
-                setFilters({ ...filters, inStock: e.target.checked })
-              }
-            />
+                setFilters({ ...filters, inStock: e.target.checked })}/>
             In Stock
           </label>
         </div>
@@ -155,15 +129,11 @@ export default function MobileFilterDrawer({
         <div className="flex gap-3 mt-6">
           <button
             onClick={clearAll}
-            className="flex-1 border rounded-lg py-2 text-sm"
-          >
-            Clear All
+            className="flex-1 border rounded-lg py-2 text-sm" > Clear All
           </button>
           <button
             onClick={onClose}
-            className="flex-1 bg-primary text-white rounded-lg py-2 text-sm"
-          >
-            Apply Filters
+            className="flex-1 bg-primary text-white rounded-lg py-2 text-sm"> Apply Filters
           </button>
         </div>
       </aside>
