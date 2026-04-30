@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext, useCallback } from "react";
 import { logo } from "../../assets/images";
 import TextInput from "../Theme/TextInput";
+import { getUserFromToken } from "../../utils/auth";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import { FiSearch, FiMenu, FiX } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
@@ -26,6 +27,12 @@ export default function TNavBar() {
   const [cartItems, setCartItems] = useState(0);
 const { cartItems: cartItemsFromContext } = useContext(CartContext);
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const decodedUser = getUserFromToken();
+    setUser(decodedUser);
+  }, []);
 
 const loadCart = useCallback(() => {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -171,6 +178,14 @@ useEffect(() => {
                         </Link>
                       </li>
                     ))}
+                                {user?.role === "admin" && (
+                         <Link
+              to="/admin"
+              className="block px-4 py-3 hover:text-secondary"
+            >
+              Admin Panel
+            </Link>
+            )}
                   </ul>
                 </div>
               </div>

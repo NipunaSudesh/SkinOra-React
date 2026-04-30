@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { getUserFromToken } from "../utils/auth";
 import { useNavigate } from "react-router-dom";
 const SKINORA_API_URL = process.env.REACT_APP_SKINORA_API_URL;
 
 export default function Profile() {
   const navigate = useNavigate();
-
-  const storedUser = JSON.parse(localStorage.getItem("user"));
-  const [user, setUser] = useState(storedUser);
   const [showEdit, setShowEdit] = useState(false);
   const [message, setMessage] = useState("");
   const [activeTab, setActiveTab] = useState("profile");
@@ -14,6 +12,13 @@ export default function Profile() {
   const [orders, setOrders] = useState([]);
   const [loadingOrders, setLoadingOrders] = useState(false);
   const [ordersError, setOrdersError] = useState(null);
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const decodedUser = getUserFromToken();
+    setUser(decodedUser);
+  }, []);
 
   const avatarUrl = user?.image
     ? user.image
@@ -113,6 +118,7 @@ const calculateGrandTotal = (order) =>
     return null;
   }
 
+  console.log("User data in Profile component:", user);
   return (
     <div className="min-h-screen bg-gray-100 py-8 px-4">
       <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
@@ -172,7 +178,7 @@ const calculateGrandTotal = (order) =>
                 <div className="space-y-4 text-sm">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Role</span>
-                    <span className="font-medium">User</span>
+                    <span className="font-medium">{user?.role || "User"}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Joined</span>

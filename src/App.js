@@ -18,6 +18,7 @@ import Team from "./Pages/Terms";
 import ThankYou from "./Pages/ThankYou";
 import ErrorPage from "./Pages/ErrorPage";
 import SearchPage from "./Pages/SearchPage";
+import AdminDashboard from "./Pages/AdminPanel/AdminDashboard";
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<ErrorPage />} />
+          <Route path="/admin" element={<AdminDashboard />} />
         </Routes>
       </Router>
     </>
