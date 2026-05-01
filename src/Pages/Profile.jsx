@@ -82,7 +82,8 @@ const fetchOrders = useCallback(async () => {
     }, 0) || 0;
 
     const shipping = itemCount * 350;
-    const grandTotal = order.totalAmount || (subtotal + shipping);
+    // const grandTotal = order.totalAmount || (subtotal + shipping);
+    const grandTotal = order.totalAmount + shipping;
 
     return { subtotal, shipping, grandTotal };
   };

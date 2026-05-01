@@ -44,6 +44,8 @@ function App() {
             <Route path="/terms" element={<Team />} />
             <Route path="/thankyou" element={<ThankYou />} />
            <Route path="/search" element={<SearchPage />} />
+
+            <Route path="/admin" element={<AdminDashboard />} />
           </Route>
 
 
@@ -52,7 +54,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<ErrorPage />} />
-          <Route path="/admin" element={<AdminDashboard />} />
+         
         </Routes>
       </Router>
     </>
