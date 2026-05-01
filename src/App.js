@@ -45,7 +45,7 @@ function App() {
             <Route path="/thankyou" element={<ThankYou />} />
            <Route path="/search" element={<SearchPage />} />
 
-            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
           </Route>
 
 

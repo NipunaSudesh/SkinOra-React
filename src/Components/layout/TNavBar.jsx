@@ -180,7 +180,7 @@ useEffect(() => {
                     ))}
                                 {user?.role === "admin" && (
                          <Link
-              to="/admin"
+              to="/admin/dashboard"
               className="block px-4 py-3 hover:text-secondary"
             >
               Admin Panel

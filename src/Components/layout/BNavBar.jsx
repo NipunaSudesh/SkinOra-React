@@ -39,7 +39,7 @@ import { getUserFromToken } from "../../utils/auth";
             ))}
             {user?.role === "admin" && (
                          <Link
-              to="/admin"
+              to="/admin/dashboard"
               className="text-yellow-300 font-semibold hover:text-secondary"
             >
               Admin Panel
