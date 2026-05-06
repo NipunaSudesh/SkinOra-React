@@ -19,6 +19,10 @@ import ThankYou from "./Pages/ThankYou";
 import ErrorPage from "./Pages/ErrorPage";
 import SearchPage from "./Pages/SearchPage";
 import AdminDashboard from "./Pages/AdminPanel/AdminDashboard";
+import { UserManagement } from "./Pages/AdminPanel/UserManagement";
+import { ProductManagement } from "./Pages/AdminPanel/ProductManagement";
+import { OrderManagement } from "./Pages/AdminPanel/OrderManagement";
+import { CategoriesManagement } from "./Pages/AdminPanel/CategoriesManagement";
 
 function App() {
   return (
@@ -46,6 +50,10 @@ function App() {
            <Route path="/search" element={<SearchPage />} />
 
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            <Route path="/admin/users-management" element={<UserManagement />} />
+            <Route path="/admin/products-management" element={<ProductManagement />} />
+            <Route path="/admin/orders-management" element={<OrderManagement />} />
+            <Route path="/admin/categories-management" element={<CategoriesManagement />} />
           </Route>
 
 
