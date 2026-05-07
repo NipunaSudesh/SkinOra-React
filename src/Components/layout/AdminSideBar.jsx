@@ -34,7 +34,7 @@ const AdminSidebar = () => {
     <>
       {/* ==================== MOBILE TOP BAR ==================== */}
       <div className="md:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-4 bg-white border-b shadow-sm">
-        <h1 className="text-xl font-bold text-gray-800">Admin Panel</h1>
+        <h1 className="text-xl font-bold text-primary">Admin Panel</h1>
         
         <button
           onClick={() => setOpen(!open)}
@@ -59,7 +59,7 @@ const AdminSidebar = () => {
           <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest">
             Control Center
           </p>
-          <h2 className="text-2xl font-bold text-gray-800 mt-1">Admin Panel</h2>
+          <h2 className="text-2xl font-bold text-primary mt-1">Admin Panel</h2>
         </div>
 
         {/* Navigation */}

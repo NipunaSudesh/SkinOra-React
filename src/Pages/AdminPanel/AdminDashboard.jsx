@@ -7,20 +7,88 @@ const users = [
   { name: "Priya Nair", role: "Viewer", status: "Pending", joined: "Apr 29" },
   { name: "James Obi", role: "Admin", status: "Active", joined: "Apr 27" },
   { name: "Lena Vogel", role: "Editor", status: "Inactive", joined: "Apr 22" },
+  { name: "James Obi", role: "Admin", status: "Active", joined: "Apr 27" },
+  { name: "Lena Vogel", role: "Editor", status: "Inactive", joined: "Apr 22" },
 ];
 
 const activities = [
-  { bg: "bg-indigo-50", icon: "👤", label: "New user registered", sub: "2 min ago · sara@email.com" },
-  { bg: "bg-emerald-50", icon: "✓", label: "Order #4821 fulfilled", sub: "18 min ago · $340.00" },
-  { bg: "bg-amber-50", icon: "⚠", label: "Payment failed", sub: "45 min ago · Invoice #221" },
-  { bg: "bg-indigo-50", icon: "★", label: "New 5-star review", sub: "1 hr ago · Product SKU-998" },
+  {
+    bg: "bg-indigo-50",
+    icon: "👤",
+    label: "New user registered",
+    sub: "2 min ago · john.doe@email.com",
+  },
+  {
+    bg: "bg-emerald-50",
+    icon: "🛒",
+    label: "New order placed",
+    sub: "5 min ago · Order #1024 · $120.00",
+  },
+  {
+    bg: "bg-purple-50",
+    icon: "⭐",
+    label: "New product review",
+    sub: "1 hr ago · Product SKU-998 · 5 stars",
+  },
+    {
+    bg: "bg-slate-50",
+    icon: "📉",
+    label: "Low stock alert",
+    sub: "2 hrs ago · Product: iPhone Case",
+  },
+  {
+    bg: "bg-green-50",
+    icon: "➕",
+    label: "New product added",
+    sub: "3 hrs ago · Admin uploaded new item",
+  },
 ];
 
 const metrics = [
-  { label: "Total Revenue", value: "$84,230", delta: "+12.4% vs last month", up: true,  icon: "💰" },
-  { label: "Active Users",  value: "3,841",   delta: "+8.1% vs last month",  up: true,  icon: "👥" },
-  { label: "New Orders",    value: "526",      delta: "-3.2% vs last month",  up: false, icon: "🛍" },
-  { label: "Conversion",    value: "4.6%",     delta: "+0.9% vs last month",  up: true,  icon: "📝" },
+  {
+    label: "Total Revenue",
+    value: "$84,230",
+    delta: "+12.4% vs last month",
+    up: true,
+    icon: "💰",
+  },
+  {
+    label: "Total Users",
+    value: "3,841",
+    delta: "+8.1% vs last month",
+    up: true,
+    icon: "👥",
+  },
+  {
+    label: "Categories",
+    value: "18",
+    delta: "+2 new categories",
+    up: true,
+    icon: "📂",
+  },
+  {
+    label: "Total Products",
+    value: "248",
+    delta: "+15 new products",
+    up: true,
+    icon: "📦",
+  },
+  {
+    label: "Pending Orders",
+    value: "34",
+    delta: "-3 pending today",
+    up: false,
+    icon: "⏳",
+  },
+  {
+    label: "Completed Orders",
+    value: "472",
+    delta: "+10.2% completed",
+    up: true,
+    icon: "✅",
+  },
+
+
 ];
 
 const statusClasses = {
@@ -60,7 +128,7 @@ export default function AdminDashboard() {
           <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition">
             <div className="flex justify-between items-center mb-5">
               <h2 className="text-base font-semibold text-gray-900">Recent Activity</h2>
-              <span className="text-sm text-indigo-600 hover:underline cursor-pointer">View all</span>
+              {/* <span className="text-sm text-indigo-600 hover:underline cursor-pointer">View all</span> */}
             </div>
             <div className="space-y-4">
               {activities.map((a, i) => (
@@ -81,7 +149,7 @@ export default function AdminDashboard() {
           <div className="lg:col-span-2 bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition">
             <div className="flex justify-between items-center mb-5">
               <h2 className="text-base font-semibold text-gray-900">Recent Users</h2>
-              <span className="text-sm text-indigo-600 hover:underline cursor-pointer">Export</span>
+              {/* <span className="text-sm text-indigo-600 hover:underline cursor-pointer">Export</span> */}
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
