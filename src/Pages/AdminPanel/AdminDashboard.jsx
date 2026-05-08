@@ -1,111 +1,115 @@
 import AdminLayout from "./AdminLayout";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Menu } from "lucide-react";
 
-/* ---------------- DATA ---------------- */
 
-const users = [
-  { name: "Marco Rossi", role: "Editor", status: "Active", joined: "May 1" },
-  { name: "Priya Nair", role: "Viewer", status: "Pending", joined: "Apr 29" },
-  { name: "James Obi", role: "Admin", status: "Active", joined: "Apr 27" },
-  { name: "Lena Vogel", role: "Editor", status: "Inactive", joined: "Apr 22" },
-  { name: "James Obi", role: "Admin", status: "Active", joined: "Apr 27" },
-  { name: "Lena Vogel", role: "Editor", status: "Inactive", joined: "Apr 22" },
-];
+const userClasses = {
+  user:   "bg-green-200 text-green-900",
+  admin:  "bg-yellow-300 text-gray-700",
+  "super admin": "bg-red-200 text-gray-100",
+};
 
-const activities = [
-  {
-    bg: "bg-indigo-50",
-    icon: "👤",
-    label: "New user registered",
-    sub: "2 min ago · john.doe@email.com",
-  },
-  {
-    bg: "bg-emerald-50",
-    icon: "🛒",
-    label: "New order placed",
-    sub: "5 min ago · Order #1024 · $120.00",
-  },
-  {
-    bg: "bg-purple-50",
-    icon: "⭐",
-    label: "New product review",
-    sub: "1 hr ago · Product SKU-998 · 5 stars",
-  },
-    {
-    bg: "bg-slate-50",
-    icon: "📉",
-    label: "Low stock alert",
-    sub: "2 hrs ago · Product: iPhone Case",
-  },
-  {
-    bg: "bg-green-50",
-    icon: "➕",
-    label: "New product added",
-    sub: "3 hrs ago · Admin uploaded new item",
-  },
-];
+export default function AdminDashboard() {
+const [dashboardData, setDashboardData] = useState(null);
+const API_URL = process.env.REACT_APP_SKINORA_API_URL;
+const [open, setOpen] = useState(false);
 
+const groupedActivities = Object.values(
+  (dashboardData?.data?.activities || []).reduce((acc, activity) => {
+    const key = activity.label;
+
+    if (!acc[key]) {
+      acc[key] = {
+        ...activity,
+        count: 1,
+      };
+    } else {
+      acc[key].count += 1;
+    }
+
+    return acc;
+  }, {})
+);
 const metrics = [
   {
     label: "Total Revenue",
-    value: "$84,230",
-    delta: "+12.4% vs last month",
+    value: `Rs ${dashboardData?.data?.totalRevenue}.00`,
+    delta: "Revenue",
     up: true,
     icon: "💰",
   },
   {
     label: "Total Users",
-    value: "3,841",
-    delta: "+8.1% vs last month",
+    value: dashboardData?.data?.totalUsers,
+    delta: "Users",
     up: true,
     icon: "👥",
   },
   {
     label: "Categories",
-    value: "18",
-    delta: "+2 new categories",
+    value: dashboardData?.data?.totalCategories,
+    delta: "Categories",
     up: true,
     icon: "📂",
   },
   {
     label: "Total Products",
-    value: "248",
-    delta: "+15 new products",
+    value: dashboardData?.data?.totalProducts,
+    delta: "Products",
     up: true,
     icon: "📦",
   },
   {
     label: "Pending Orders",
-    value: "34",
-    delta: "-3 pending today",
+    value: dashboardData?.data?.pendingOrders,
+    delta: "Pending",
     up: false,
     icon: "⏳",
   },
   {
     label: "Completed Orders",
-    value: "472",
-    delta: "+10.2% completed",
+    value: dashboardData?.data?.completedOrders,
+    delta: "Completed",
     up: true,
     icon: "✅",
   },
-
-
 ];
+const fetchDashBoardData =async ()=>{
+  try {
+            const token = localStorage.getItem("token");
 
-const statusClasses = {
-  Active:   "bg-green-100 text-green-800",
-  Pending:  "bg-yellow-100 text-yellow-700",
-  Inactive: "bg-gray-100 text-gray-600",
-};
+        const { data } = await axios.get(
+          `${API_URL}/api/admin/stats`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setDashboardData(data);
+        console.log("Dashboard Data:", data);
+  } catch (error) {
+    console.log(error);
+  }
+}
+useEffect(()=>{
+  fetchDashBoardData();
+},[])
 
-/* ---------------- MAIN ---------------- */
-
-export default function AdminDashboard() {
   return (
-    <AdminLayout>
-      <div className="p-6 bg-[#f5f4f0]  flex flex-col gap-4">
-
+    <AdminLayout open={open} setOpen={setOpen}>
+      <div className=" bg-[#f5f4f0]  flex flex-col gap-4">
+<div className=" md:hidden">
+  <button
+    onClick={() => setOpen(true)}
+    className="bg-white shadow-lg border w-11 h-11 flex items-center justify-center rounded-xl hover:bg-gray-50 transition"
+  >
+    <Menu size={22} />
+  </button>
+</div>
         {/* Metric Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 ">
           {metrics.map((m) => (
             <div key={m.label} className="bg-white rounded-2xl border border-black/[0.06] p-5">
               <div className="flex justify-between items-center mb-2.5">
@@ -127,17 +131,25 @@ export default function AdminDashboard() {
           {/* Recent Activity */}
           <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition">
             <div className="flex justify-between items-center mb-5">
-              <h2 className="text-base font-semibold text-gray-900">Recent Activity</h2>
+              <h2 className="text-base font-semibold text-primary">Recent Activity</h2>
               {/* <span className="text-sm text-indigo-600 hover:underline cursor-pointer">View all</span> */}
             </div>
             <div className="space-y-4">
-              {activities.map((a, i) => (
+              {groupedActivities.map((a, i) => (
                 <div key={i} className="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 transition">
                   <div className={`w-9 h-9 rounded-xl flex items-center justify-center text-sm font-semibold shadow-sm ${a.bg}`}>
                     {a.icon}
                   </div>
                   <div className="flex-1">
-                    <div className="text-sm font-medium text-gray-900">{a.label}</div>
+                    <div className="text-sm font-medium text-gray-900">
+                      {a.label}
+
+                      {a.count > 1 && (
+                        <span className="ml-2 text-xs bg-gray-100 px-2 py-0.5 rounded-full">
+                          {a.count}
+                        </span>
+                      )}
+                    </div>
                     <div className="text-xs text-gray-400 mt-0.5">{a.sub}</div>
                   </div>
                 </div>
@@ -148,29 +160,36 @@ export default function AdminDashboard() {
           {/* Recent Users */}
           <div className="lg:col-span-2 bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition">
             <div className="flex justify-between items-center mb-5">
-              <h2 className="text-base font-semibold text-gray-900">Recent Users</h2>
+              <h2 className="text-base font-semibold text-primary">Recent Users</h2>
               {/* <span className="text-sm text-indigo-600 hover:underline cursor-pointer">Export</span> */}
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="text-left text-xs text-gray-400 border-b border-gray-100">
-                    {["Name", "Role", "Status", "Joined"].map((h) => (
+                  <tr className="text-left text-xs text-gray-900 border-b border-gray-100">
+                    {["Name", "Role",  "Joined"].map((h) => (
                       <th key={h} className="pb-3 font-medium">{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {users.map((u) => (
+                  {dashboardData?.data?.recentUsers?.map((u) => (
                     <tr key={u.name} className="border-b border-gray-50 hover:bg-gray-50 transition">
-                      <td className="py-3 font-medium text-gray-900">{u.name}</td>
-                      <td className="py-3 text-gray-500">{u.role}</td>
-                      <td className="py-3">
-                        <span className={`px-3 py-1 rounded-full text-xs font-medium ${statusClasses[u.status]}`}>
-                          {u.status}
+                      <td className="py-3 font-medium text-gray-600">{u.name}</td>
+    
+
+               <td className="py-3">
+                        <span className={`px-3 py-1 rounded-full text-xs font-medium ${userClasses[u.role]}`}>
+                          {u.role}
                         </span>
                       </td>
-                      <td className="py-3 text-gray-400">{u.joined}</td>
+
+            <td className="py-3 text-gray-600">
+        {new Date(u.createdAt).toLocaleDateString("en-GB", {
+          day: "2-digit",
+          month: "short",
+        })}
+      </td>
                     </tr>
                   ))}
                 </tbody>

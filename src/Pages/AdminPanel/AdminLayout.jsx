@@ -1,9 +1,9 @@
 import AdminSidebar from ".././../Components/layout/AdminSideBar";
 
-const AdminLayout = ({ children }) => {
+const AdminLayout = ({ children, open, setOpen }) => {
   return (
     <div className="flex">
-      <AdminSidebar />
+      <AdminSidebar open={open} setOpen={setOpen} />
 
       {/* Main Content */}
       <div className="flex-1 md:ml-4 p-4 bg-gray-100 ">
