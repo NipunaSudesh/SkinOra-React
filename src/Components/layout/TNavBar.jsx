@@ -178,8 +178,11 @@ useEffect(() => {
                         </Link>
                       </li>
                     ))}
-                                {user?.role === "admin" && (
+                                {user?.role === "admin" ||
+                                user?.role === "super admin"
+                                && (
                          <Link
+                          onClick={() => setShowMobileMenu(false)}
               to="/admin/dashboard"
               className="block px-4 py-3 hover:text-secondary"
             >
