@@ -191,7 +191,7 @@ const handleDeleteClick = (user) => {
           // onClick={handleUpdateUser}
           className="px-4 py-2 bg-primary min-w-20 text-white rounded cursor-pointer hover:bg-secondary transition"
         >
-          Save
+          Save2
         </button>
       </div>
     </div>
