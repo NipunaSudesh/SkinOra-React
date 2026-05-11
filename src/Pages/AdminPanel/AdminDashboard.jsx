@@ -7,7 +7,7 @@ import { Menu } from "lucide-react";
 const userClasses = {
   user:   "bg-green-200 text-green-900",
   admin:  "bg-yellow-300 text-gray-700",
-  "super admin": "bg-red-200 text-gray-100",
+  superadmin: "bg-red-200 text-gray-100",
 };
 
 export default function AdminDashboard() {
