@@ -18,26 +18,21 @@ export default function About() {
             {/* content */}
             <div className="relative container-card text-start">
     
-              <h1 className="text-4xl md:text-5xl font-bold text-white mt-2">
-                 About SkinOra
-              </h1>
+              <h1 className="text-4xl md:text-5xl font-bold text-white mt-2"> About SkinOra </h1>
     
         <p className="text-gray-300 leading-relaxed mb-1 mt-4">
           <strong>SkinOra</strong> is an online skincare and beauty platform
           designed to bring you high-quality products at affordable prices.
           Our goal is to make skincare simple, effective, and accessible to
-          everyone.
-        </p>
+          everyone.  </p>
 
         <p className="text-gray-300 leading-relaxed mb-1">
           We carefully curate products from trusted brands and ensure
-          authenticity, safety, and customer satisfaction.
-        </p>
+          authenticity, safety, and customer satisfaction. </p>
 
         <p className="text-gray-100 leading-relaxed">
           Whether you are looking for daily skincare essentials or premium
-          beauty products, SkinOra is here to help you glow with confidence ✨
-        </p>
+          beauty products, SkinOra is here to help you glow with confidence ✨   </p>
             </div>
           </div>
         </section>

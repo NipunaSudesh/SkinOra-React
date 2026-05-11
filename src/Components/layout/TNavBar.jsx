@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext, useCallback } from "react";
 import { logo } from "../../assets/images";
 import TextInput from "../Theme/TextInput";
+import { getUserFromToken } from "../../utils/auth";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import { FiSearch, FiMenu, FiX } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
@@ -26,6 +27,12 @@ export default function TNavBar() {
   const [cartItems, setCartItems] = useState(0);
 const { cartItems: cartItemsFromContext } = useContext(CartContext);
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const decodedUser = getUserFromToken();
+    setUser(decodedUser);
+  }, []);
 
 const loadCart = useCallback(() => {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -42,39 +49,6 @@ useEffect(() => {
   window.addEventListener("storage", handleStorage);
   return () => window.removeEventListener("storage", handleStorage);
 }, [loadCart]);
-  // Load cart items from localStorage
-  // const loadCart = () => {
-  //   const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  //   setCartItems(cart.length);
-  //   console.log("Cart items loaded:", cartItems);
-  // };
-//   const loadCart = useCallback(() => {
-//   const cart = JSON.parse(localStorage.getItem("cart")) || [];
-//   setCartItems(cart.length);
-//   console.log("Cart items loaded:", cart.length);
-//   console.log("Cart items loaded:", cartItems);
-// }, []);
-// useEffect(() => {
-//   loadCart();
-
-//   // Optional: listen for storage events (cart updated in another tab)
-//   const handleStorage = (e) => {
-//     if (e.key === "cart") loadCart();
-//   };
-
-//   window.addEventListener("storage", handleStorage);
-//   return () => window.removeEventListener("storage", handleStorage);
-// }, [loadCart]); 
-  // useEffect(() => {
-  //   loadCart();
-
-  //   // Optional: listen for storage events (cart updated in another tab)
-  //   const handleStorage = (e) => {
-  //     if (e.key === "cart") loadCart();
-  //   };
-  //   window.addEventListener("storage", handleStorage);
-  //   return () => window.removeEventListener("storage", handleStorage);
-  // }, []);
 
   /* CART */
   const handleCart = () => navigate("/cart");
@@ -204,6 +178,17 @@ useEffect(() => {
                         </Link>
                       </li>
                     ))}
+                                {user?.role === "admin" ||
+                                user?.role === "super admin"
+                                && (
+                         <Link
+                          onClick={() => setShowMobileMenu(false)}
+              to="/admin/dashboard"
+              className="block px-4 py-3 hover:text-secondary"
+            >
+              Admin Panel
+            </Link>
+            )}
                   </ul>
                 </div>
               </div>

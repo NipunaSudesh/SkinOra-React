@@ -1,0 +1,92 @@
+Date : 2026-02-20 16:28:04
+Directory : d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src
+Total : 52 files,  4026 codes, 216 comments, 576 blanks, all 4818 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| JavaScript JSX |         42 |      3,410 |        200 |        531 |      4,141 |
+| XML            |          2 |        339 |          0 |          1 |        340 |
+| PostCSS        |          2 |        142 |          6 |         20 |        168 |
+| JavaScript     |          6 |        135 |         10 |         24 |        169 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                   | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                      |         52 |      4,026 |        216 |        576 |      4,818 |
+| . (Files)                                                                                              |          8 |        231 |         14 |         35 |        280 |
+| Components                                                                                             |         14 |        689 |         45 |        114 |        848 |
+| Components\Theme                                                                                       |          5 |        123 |          4 |         18 |        145 |
+| Components\cart                                                                                        |          3 |        233 |         19 |         38 |        290 |
+| Components\layout                                                                                      |          6 |        333 |         22 |         58 |        413 |
+| Pages                                                                                                  |         27 |      2,701 |        155 |        412 |      3,268 |
+| Pages (Files)                                                                                          |         14 |      1,703 |         76 |        246 |      2,025 |
+| Pages\home                                                                                             |          7 |        336 |         45 |         54 |        435 |
+| Pages\singleCategory                                                                                   |          5 |        427 |         25 |         60 |        512 |
+| Pages\singleProduct                                                                                    |          1 |        235 |          9 |         52 |        296 |
+| assets                                                                                                 |          2 |        358 |          0 |          6 |        364 |
+| assets\images                                                                                          |          2 |        358 |          0 |          6 |        364 |
+| context                                                                                                |          1 |         47 |          2 |          9 |         58 |
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                                                               | language       | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\App.css                                     | PostCSS        |         70 |          1 |         11 |         82 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\App.js                                      | JavaScript     |         53 |          1 |          7 |         61 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\App.test.js                                 | JavaScript     |          7 |          0 |          2 |          9 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\Theme\Button.jsx                 | JavaScript JSX |         11 |          0 |          3 |         14 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\Theme\Header.jsx                 | JavaScript JSX |          9 |          0 |          2 |         11 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\Theme\TextInput.jsx              | JavaScript JSX |         12 |          0 |          2 |         14 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\Theme\Textarea.jsx               | JavaScript JSX |         18 |          0 |          3 |         21 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\Theme\Typography.jsx             | JavaScript JSX |         73 |          4 |          8 |         85 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\cart\AddCart.jsx                 | JavaScript JSX |         92 |          7 |         13 |        112 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\cart\CategoryCart.jsx            | JavaScript JSX |         25 |          3 |          6 |         34 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\cart\ProductCart.jsx             | JavaScript JSX |        116 |          9 |         19 |        144 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\layout\BNavBar.jsx               | JavaScript JSX |         32 |          1 |          3 |         36 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\layout\Footer.jsx                | JavaScript JSX |         83 |          7 |         15 |        105 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\layout\HeartCursor.jsx           | JavaScript JSX |         35 |          2 |         15 |         52 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\layout\NavBar.jsx                | JavaScript JSX |         11 |          2 |          3 |         16 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\layout\PublicLayout.jsx          | JavaScript JSX |         15 |          1 |          4 |         20 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\layout\TNavBar.jsx               | JavaScript JSX |        157 |          9 |         18 |        184 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\About.jsx                             | JavaScript JSX |         44 |          2 |          7 |         53 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\AddToCart.jsx                         | JavaScript JSX |        156 |          3 |         33 |        192 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\AllCategories.jsx                     | JavaScript JSX |         43 |          1 |          4 |         48 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\AllProducts.jsx                       | JavaScript JSX |        168 |         19 |         24 |        211 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\CheckOut.jsx                          | JavaScript JSX |        237 |         11 |         28 |        276 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\Contact.jsx                           | JavaScript JSX |         74 |          3 |         15 |         92 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\ErrorPage.jsx                         | JavaScript JSX |         37 |          3 |          8 |         48 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\Login.jsx                             | JavaScript JSX |        124 |          6 |         18 |        148 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\PrivacyPolicy.jsx                     | JavaScript JSX |         49 |          0 |          8 |         57 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\Profile.jsx                           | JavaScript JSX |        448 |         13 |         49 |        510 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\Register.jsx                          | JavaScript JSX |        155 |          6 |         25 |        186 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\SearchPage.jsx                        | JavaScript JSX |         58 |          2 |         10 |         70 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\Terms.jsx                             | JavaScript JSX |         84 |          7 |         10 |        101 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\ThankYou.jsx                          | JavaScript JSX |         26 |          0 |          7 |         33 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\home\AboutSkinOra.jsx                 | JavaScript JSX |         17 |          0 |          2 |         19 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\home\Banner.jsx                       | JavaScript JSX |         57 |         30 |         10 |         97 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\home\Categorys.jsx                    | JavaScript JSX |         84 |          5 |         10 |         99 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\home\CustomerTestimonials.jsx         | JavaScript JSX |         60 |          3 |         11 |         74 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\home\Features.jsx                     | JavaScript JSX |         49 |          5 |          9 |         63 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\home\Home.jsx                         | JavaScript JSX |         19 |          0 |          3 |         22 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\home\Products.jsx                     | JavaScript JSX |         50 |          2 |          9 |         61 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\singleCategory\Banner.jsx             | JavaScript JSX |         41 |          2 |         10 |         53 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\singleCategory\CategoryPage.jsx       | JavaScript JSX |         13 |          0 |          4 |         17 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\singleCategory\CategoryProduct.jsx    | JavaScript JSX |        137 |         11 |         24 |        172 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\singleCategory\MobileFilterDrawer.jsx | JavaScript JSX |        124 |          7 |         12 |        143 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\singleCategory\ProductFilter.jsx      | JavaScript JSX |        112 |          5 |         10 |        127 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\singleProduct\SingleProduct.jsx       | JavaScript JSX |        235 |          9 |         52 |        296 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\assets\images\index.jsx                     | JavaScript JSX |         20 |          0 |          5 |         25 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\assets\images\logo.svg                      | XML            |        338 |          0 |          1 |        339 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\context\CartContext.js                      | JavaScript     |         47 |          2 |          9 |         58 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\index.css                                   | PostCSS        |         72 |          5 |          9 |         86 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\index.js                                    | JavaScript     |         15 |          3 |          3 |         21 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\logo.svg                                    | XML            |          1 |          0 |          0 |          1 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\reportWebVitals.js                          | JavaScript     |         12 |          0 |          2 |         14 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\setupTests.js                               | JavaScript     |          1 |          4 |          1 |          6 |
+| Total                                                                                                  |                |      4,026 |        216 |        576 |      4,818 |
++--------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+

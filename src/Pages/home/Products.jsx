@@ -32,10 +32,7 @@ export default function Products() {
 
   return (
     <div className="mt-10 flex flex-col items-center">
-      <Header
-        Title="Featured Products"
-        discription="Premium Skincare And Beauty, Chosen Just For You"
-      />
+      <Header  Title="Featured Products"  discription="Premium Skincare And Beauty, Chosen Just For You"     />
 
       <div className="flex gap-2 mt-8 justify-center flex-wrap">
         {products.slice(0, 10).map((product) => (

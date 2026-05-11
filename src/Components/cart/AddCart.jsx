@@ -3,23 +3,7 @@ import { FaTrash } from "react-icons/fa";
 import { CartContext } from "../../context/CartContext";
 
 export default function AddCart({
-  id,
-  imageUrl,
-  name,
-  price,
-  slug,
-  oldPrice,
-  discountPercent,
-  stockStatus,
-  category,
-  brand,
-  qty,
-  checked,
-  onSelect,
-  onQtyChange,
-  onRemove,
-  mode = "cart",
-}) {
+  id, imageUrl, name,price,slug,oldPrice,discountPercent,stockStatus,category,brand,qty,checked,onSelect,onQtyChange,  onRemove, mode = "cart",}) {
   const { updateQtyLocal, removeItemLocal } = useContext(CartContext);
 
   // Optimistic update: update context immediately, then call API

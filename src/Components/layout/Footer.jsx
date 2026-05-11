@@ -1,14 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { logo } from "../../assets/images";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaTiktok,
-  FaMapMarkerAlt,
-  FaEnvelope,
-  FaPhoneAlt,
-} from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaTiktok, FaMapMarkerAlt, FaEnvelope, FaPhoneAlt,} from "react-icons/fa";
 import Typography from "../Theme/Typography";
 
 export default function Footer() {

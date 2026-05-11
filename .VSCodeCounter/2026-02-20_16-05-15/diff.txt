@@ -1,0 +1,56 @@
+Date : 2026-02-20 16:05:15
+Directory : d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React
+Total : 18 files,  -185 codes, -30 comments, -4 blanks, all -219 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| Git Commit Message |          1 |         -1 |          0 |         -1 |         -2 |
+| JavaScript         |          1 |         -8 |          0 |          0 |         -8 |
+| JavaScript JSX     |         16 |       -176 |        -30 |         -3 |       -209 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                   | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                      |         18 |       -185 |        -30 |         -4 |       -219 |
+| .git                                                                                                   |          1 |         -1 |          0 |         -1 |         -2 |
+| src                                                                                                    |         17 |       -184 |        -30 |         -3 |       -217 |
+| src\Components                                                                                         |          8 |        -83 |        -30 |         -3 |       -116 |
+| src\Components\Theme                                                                                   |          3 |        -33 |          0 |          0 |        -33 |
+| src\Components\cart                                                                                    |          3 |        -43 |          0 |          0 |        -43 |
+| src\Components\layout                                                                                  |          2 |         -7 |        -30 |         -3 |        -40 |
+| src\Pages                                                                                              |          8 |        -93 |          0 |          0 |        -93 |
+| src\Pages (Files)                                                                                      |          1 |         -5 |          0 |          0 |         -5 |
+| src\Pages\home                                                                                         |          2 |        -13 |          0 |          0 |        -13 |
+| src\Pages\singleCategory                                                                               |          4 |        -72 |          0 |          0 |        -72 |
+| src\Pages\singleProduct                                                                                |          1 |         -3 |          0 |          0 |         -3 |
+| src\context                                                                                            |          1 |         -8 |          0 |          0 |         -8 |
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                                               | language           | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\.git\COMMIT_EDITMSG                             | Git Commit Message |         -1 |          0 |         -1 |         -2 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\Theme\TextInput.jsx              | JavaScript JSX     |         -5 |          0 |          0 |         -5 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\Theme\Textarea.jsx               | JavaScript JSX     |         -9 |          0 |          0 |         -9 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\Theme\Typography.jsx             | JavaScript JSX     |        -19 |          0 |          0 |        -19 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\cart\AddCart.jsx                 | JavaScript JSX     |        -16 |          0 |          0 |        -16 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\cart\CategoryCart.jsx            | JavaScript JSX     |         -2 |          0 |          0 |         -2 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\cart\ProductCart.jsx             | JavaScript JSX     |        -25 |          0 |          0 |        -25 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\layout\Footer.jsx                | JavaScript JSX     |         -7 |          0 |          0 |         -7 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Components\layout\TNavBar.jsx               | JavaScript JSX     |          0 |        -30 |         -3 |        -33 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\About.jsx                             | JavaScript JSX     |         -5 |          0 |          0 |         -5 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\home\CustomerTestimonials.jsx         | JavaScript JSX     |        -10 |          0 |          0 |        -10 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\home\Products.jsx                     | JavaScript JSX     |         -3 |          0 |          0 |         -3 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\singleCategory\Banner.jsx             | JavaScript JSX     |         -6 |          0 |          0 |         -6 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\singleCategory\CategoryProduct.jsx    | JavaScript JSX     |        -14 |          0 |          0 |        -14 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\singleCategory\MobileFilterDrawer.jsx | JavaScript JSX     |        -30 |          0 |          0 |        -30 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\singleCategory\ProductFilter.jsx      | JavaScript JSX     |        -22 |          0 |          0 |        -22 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\Pages\singleProduct\SingleProduct.jsx       | JavaScript JSX     |         -3 |          0 |          0 |         -3 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-React\src\context\CartContext.js                      | JavaScript         |         -8 |          0 |          0 |         -8 |
+| Total                                                                                                  |                    |       -185 |        -30 |         -4 |       -219 |
++--------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+

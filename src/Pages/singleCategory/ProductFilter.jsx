@@ -13,17 +13,7 @@ const CATEGORIES = [
 ];
 
 const BRANDS = [
-  "L'Oréal Men Expert",
-  "Gillette",
-  "Nivea",
-  "Dove",
-  "CeraVe",
-  "Cetaphil",
-  "Garnier",
-  "OGX",
-  "Old Spice",
-  "Brut",
-];
+  "L'Oréal Men Expert","Gillette","Nivea","Dove", "CeraVe","Cetaphil","Garnier","OGX","Old Spice","Brut",];
 const COUNTRIES = [
   { name: "Australia",       code: "AU" },
   { name: "Canada",          code: "CA" },
@@ -38,10 +28,7 @@ const COUNTRIES = [
 ];
 
 export default function ProductFilter({
-  filters,
-  setFilters,
-  hideCategory = false,
-}) {
+  filters, setFilters, hideCategory = false,}) {
   const toggleBrand = (brand) => {
     setFilters((prev) => ({
       ...prev,
@@ -68,9 +55,7 @@ export default function ProductFilter({
         <h3 className="text-xl font-semibold text-primary">Filters</h3>
         <button
           onClick={clearAll}
-          className="text-sm text-secondary hover:underline"
-        >
-          Clear All
+          className="text-sm text-secondary hover:underline" > Clear All
         </button>
       </div>
 
@@ -82,9 +67,7 @@ export default function ProductFilter({
             className="w-full border rounded-lg px-3 py-2"
             value={filters.category || ""}
             onChange={(e) =>
-              setFilters({ ...filters, category: e.target.value })
-            }
-          >
+              setFilters({ ...filters, category: e.target.value })}>
             <option value="">All Categories</option>
             {CATEGORIES.map((cat) => (
               <option key={cat.slug} value={cat.slug}>
@@ -100,9 +83,7 @@ export default function ProductFilter({
     className="w-full border rounded-lg px-3 py-2"
     value={filters.country || ""}
     onChange={(e) =>
-      setFilters({ ...filters, country: e.target.value })
-    }
-  >
+      setFilters({ ...filters, country: e.target.value }) }>
     <option value="">All Countries</option>
     {COUNTRIES.map((country) => (
       <option key={country.code} value={country.code}>
@@ -121,8 +102,7 @@ export default function ProductFilter({
               <input
                 type="checkbox"
                 checked={filters.brands.includes(brand)}
-                onChange={() => toggleBrand(brand)}
-              />
+                onChange={() => toggleBrand(brand)}/>
               {brand}
             </label>
           ))}
@@ -137,9 +117,7 @@ export default function ProductFilter({
             type="checkbox"
             checked={filters.inStock}
             onChange={(e) =>
-              setFilters({ ...filters, inStock: e.target.checked })
-            }
-          />
+              setFilters({ ...filters, inStock: e.target.checked })}/>
           In Stock
         </label>
       </div>

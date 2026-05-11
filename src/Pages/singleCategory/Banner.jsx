@@ -39,18 +39,12 @@ export default function Banner() {
 
         {/* content */}
         <div className="relative container-card text-start">
-          <h2 className="text-lg text-white tracking-wide">
-            Category
-          </h2>
+          <h2 className="text-lg text-white tracking-wide">  Category  </h2>
 
-          <h1 className="text-4xl md:text-5xl font-bold text-white mt-2">
-            {category?.categoriesName || "Loading..."}
-          </h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mt-2">{category?.categoriesName || "Loading..."}        </h1>
 
-          <p className="text-white mt-1 max-w-xl">
-            {category?.longDescription ||
-              "Discover premium skincare products selected just for you."}
-          </p>
+          <p className="text-white mt-1 max-w-xl">   {category?.longDescription ||
+              "Discover premium skincare products selected just for you."} </p>
         </div>
       </div>
     </section>
