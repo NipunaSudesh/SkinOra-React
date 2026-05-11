@@ -4,7 +4,7 @@ import { Menu } from "lucide-react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { getUserFromToken } from "../../utils/auth";
 import { Pagination } from "../../Components/Theme/Pagination";
-
+import axios from "axios";
 import {
   FaUsers,
   FaUser,
@@ -12,85 +12,37 @@ import {
   FaCrown,
 } from "react-icons/fa";
 
-const userStats = [
-  {
-    title: "Total Users",
-    value: "1,284",
-    color: "text-green-600",
-    icon: FaUsers,
-    bg: "bg-green-100",
-    iconColor: "text-green-600",
-  },
-  {
-    title: "Users",
-    value: "1,091",
-    color: "text-blue-600",
-    icon: FaUser,
-    bg: "bg-blue-100",
-    iconColor: "text-blue-600",
-  },
-  {
-    title: "Admins",
-    value: "80",
-    color: "text-purple-600",
-    icon: FaUserShield,
-    bg: "bg-purple-100",
-    iconColor: "text-purple-600",
-  },
-  {
-    title: "Super Admins",
-    value: "10",
-    color: "text-red-600",
-    icon: FaCrown,
-    bg: "bg-red-100",
-    iconColor: "text-red-600",
-  },
-];
-
-const users = [
-  // 🔵 USERS (20)
-  ...Array.from({ length: 20 }, (_, i) => ({
-    id: i + 1,
-    user: `User ${i + 1}`,
-    email: `user${i + 1}@mail.com`,
-    role: "User",
-    status: ["Active", "Blocked", "Pending"][i % 3],
-    joined: `2026-03-${(i % 28) + 1}`,
-  })),
-
-  // 🟣 ADMINS (20)
-  ...Array.from({ length: 20 }, (_, i) => ({
-    id: i + 21,
-    user: `Admin ${i + 1}`,
-    email: `admin${i + 1}@mail.com`,
-    role: "Admin",
-    status: ["Active", "Blocked", "Pending"][i % 3],
-    joined: `2026-04-${(i % 28) + 1}`,
-  })),
-
-  // 🔴 SUPER ADMINS (20)
-  ...Array.from({ length: 20 }, (_, i) => ({
-    id: i + 41,
-    user: `SuperAdmin ${i + 1}`,
-    email: `superadmin${i + 1}@mail.com`,
-    role: "Super Admin",
-    status: ["Active", "Blocked", "Pending"][i % 3],
-    joined: `2026-05-${(i % 28) + 1}`,
-  })),
-];
-
 export const UserManagement = () => {
   const [open, setOpen] = useState(false);
   const [LogedUser, setLoggedUser] = useState(null);
 const [isModalOpen, setIsModalOpen] = useState(false);
 const [selectedUser, setSelectedUser] = useState(null);
-const [allUsers, setAllUsers] = useState(users); 
+const [allUsers, setAllUsers] = useState([]); 
   const [userPage, setUserPage] = useState(1);
   const [adminPage, setAdminPage] = useState(1);
   const [superAdminPage, setSuperAdminPage] = useState(1);
 const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 const [userToDelete, setUserToDelete] = useState(null);
   const itemsPerPage = 5;
+const API_URL = process.env.REACT_APP_SKINORA_API_URL;
+
+const fetchUsers = async () => {
+  try {
+    const token = localStorage.getItem("token");
+    const res =await axios.get(`${API_URL}/api/admin/users`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    setAllUsers(res.data.data);
+    console.log("all users",allUsers)
+  } catch (error) {
+    console.error("Error fetching users:", error);
+  }
+}
+useEffect(()=>{
+  fetchUsers();
+},[])
 
   useEffect(() => {
     const decodedUser = getUserFromToken();
@@ -106,16 +58,57 @@ const handleDeleteClick = (user) => {
   setIsDeleteModalOpen(true);
 };
   // Filtered Lists
-  const usersList = users.filter(u => u.role === "User");
-  const adminsList = users.filter(u => u.role === "Admin");
-  const superAdminsList = users.filter(u => u.role === "Super Admin");
+const usersList = allUsers.filter(u => u.role === "user");
+const adminsList = allUsers.filter(u => u.role === "admin");
+const superAdminsList = allUsers.filter(u => u.role === "superadmin");
 
   // Pagination Helper
   const paginate = (data, page) => {
     const start = (page - 1) * itemsPerPage;
     return data.slice(start, start + itemsPerPage);
   };
+  const formatDateCustom = (dateString) => {
+  const d = new Date(dateString);
+  const year = d.getFullYear();
+  const month = d.toLocaleString("en-GB", { month: "short" });
+  const day = String(d.getDate()).padStart(2, "0");
 
+  return `${year} ${month} ${day}`;
+};
+const userStats = [
+  {
+    title: "Total Users",
+     value: allUsers.length,
+    color: "text-green-600",
+    icon: FaUsers,
+    bg: "bg-green-100",
+    iconColor: "text-green-600",
+  },
+  {
+    title: "Users",
+    value: usersList.length,
+    color: "text-blue-600",
+    icon: FaUser,
+    bg: "bg-blue-100",
+    iconColor: "text-blue-600",
+  },
+  {
+    title: "Admins",
+    value: adminsList.length,
+    color: "text-purple-600",
+    icon: FaUserShield,
+    bg: "bg-purple-100",
+    iconColor: "text-purple-600",
+  },
+  {
+    title: "Super Admins",
+    value: superAdminsList.length,
+    color: "text-red-600",
+    icon: FaCrown,
+    bg: "bg-red-100",
+    iconColor: "text-red-600",
+  },
+];
   return (
     <AdminLayout open={open} setOpen={setOpen}>
       <div className="p-4 md:p-6 bg-[#f5f4f0] min-h-screen flex flex-col gap-6">
@@ -191,7 +184,7 @@ const handleDeleteClick = (user) => {
           // onClick={handleUpdateUser}
           className="px-4 py-2 bg-primary min-w-20 text-white rounded cursor-pointer hover:bg-secondary transition"
         >
-          Save2
+          Save
         </button>
       </div>
     </div>
@@ -271,12 +264,12 @@ const handleDeleteClick = (user) => {
                 {paginate(usersList, userPage).map((user, idx) => (
                   <tr key={user.id} className="hover:bg-gray-50 transition">
                     <td className="py-3 px-6 text-gray-500">{(userPage - 1) * itemsPerPage + idx + 1}</td>
-                    <td className="py-3 px-6 font-medium text-gray-800">{user.user}</td>
+                    <td className="py-3 px-6 font-medium text-gray-800">{user.name}</td>
                     <td className="py-3 px-6 text-gray-600">{user.email}</td>
                     <td className="py-3 px-6">
                       <span className="px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-600">{user.role}</span>
                     </td>
-                    <td className="py-3 px-6 text-gray-600">{user.joined}</td>
+                    <td className="py-3 px-6 text-gray-600"> {user.createdAt ? formatDateCustom(user.createdAt) : "-"}</td>
                     <td className="py-3 px-6 text-center">
                       <div className="flex items-center justify-center gap-3">
                         <button
@@ -321,12 +314,12 @@ const handleDeleteClick = (user) => {
                 {paginate(adminsList, adminPage).map((user, idx) => (
                   <tr key={user.id} className="hover:bg-gray-50 transition">
                     <td className="py-3 px-6 text-gray-500">{(adminPage - 1) * itemsPerPage + idx + 1}</td>
-                    <td className="py-3 px-6 font-medium text-gray-800">{user.user}</td>
+                    <td className="py-3 px-6 font-medium text-gray-800">{user.name}</td>
                     <td className="py-3 px-6 text-gray-600">{user.email}</td>
                     <td className="py-3 px-6">
                       <span className="px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-600">{user.role}</span>
                     </td>
-                    <td className="py-3 px-6 text-gray-600">{user.joined}</td>
+                    <td className="py-3 px-6 text-gray-600"> {user.createdAt ? formatDateCustom(user.createdAt) : "-"}</td>
                     {LogedUser?.role === "super admin" && (
                       <td className="py-3 px-6 text-center">
                         <div className="flex items-center justify-center gap-3">
@@ -376,12 +369,12 @@ const handleDeleteClick = (user) => {
                   {paginate(superAdminsList, superAdminPage).map((user, idx) => (
                     <tr key={user.id} className="hover:bg-gray-50 transition">
                       <td className="py-3 px-6 text-gray-500">{(superAdminPage - 1) * itemsPerPage + idx + 1}</td>
-                      <td className="py-3 px-6 font-medium text-gray-800">{user.user}</td>
+                      <td className="py-3 px-6 font-medium text-gray-800">{user.name}</td>
                       <td className="py-3 px-6 text-gray-600">{user.email}</td>
                       <td className="py-3 px-6">
                         <span className="px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-600">{user.role}</span>
                       </td>
-                      <td className="py-3 px-6 text-gray-600">{user.joined}</td>
+                      <td className="py-3 px-6 text-gray-600"> {user.createdAt ? formatDateCustom(user.createdAt) : "-"}</td>
                     </tr>
                   ))}
                 </tbody>
