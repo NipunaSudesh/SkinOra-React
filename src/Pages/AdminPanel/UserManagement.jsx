@@ -57,6 +57,73 @@ const handleDeleteClick = (user) => {
   setUserToDelete(user);
   setIsDeleteModalOpen(true);
 };
+const getRoutes = () => {
+  if (LogedUser?.role === "superadmin") {
+    return {
+      updateUrl: `${API_URL}/api/admin/update-admin`,
+      deleteUrl: `${API_URL}/api/admin/delete-admin`,
+    };
+  }
+
+  return {
+    updateUrl: `${API_URL}/api/admin/update-user`,
+    deleteUrl: `${API_URL}/api/admin/delete-user`,
+  };
+};
+const handleUpdateUser = async () => {
+  try {
+    const token = localStorage.getItem("token");
+    const routes = getRoutes();
+
+    const res = await axios.patch(
+      `${routes.updateUrl}/${selectedUser._id}`,
+      {
+        name: selectedUser.name,
+        email: selectedUser.email,
+        role: selectedUser.role,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    console.log("Updated:", res.data);
+
+    setIsModalOpen(false);
+    setSelectedUser(null);
+
+    fetchUsers();
+  } catch (error) {
+    console.error("Update error:", error.response?.data || error.message);
+  }
+};
+const handleDeleteUser = async () => {
+  try {
+    const token = localStorage.getItem("token");
+    const routes = getRoutes();
+
+    const res = await axios.delete(
+      `${routes.deleteUrl}/${userToDelete._id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    console.log("Deleted:", res.data);
+
+    setIsDeleteModalOpen(false);
+    setUserToDelete(null);
+
+    fetchUsers();
+  } catch (error) {
+    console.error("Delete error:", error.response?.data || error.message);
+  }
+};
+
   // Filtered Lists
 const usersList = allUsers.filter(u => u.role === "user");
 const adminsList = allUsers.filter(u => u.role === "admin");
@@ -167,8 +234,8 @@ const userStats = [
         }
         className="w-full border p-2 rounded mb-3"
       >
-        <option value="User">User</option>
-        <option value="Admin">Admin</option>
+        <option value="user">User</option>
+        <option value="admin">Admin</option>
       </select>
 </div>
 
@@ -180,8 +247,7 @@ const userStats = [
           Cancel
         </button>
 
-        <button onClick={() => setIsModalOpen(false)}
-          // onClick={handleUpdateUser}
+        <button onClick={handleUpdateUser}
           className="px-4 py-2 bg-primary min-w-20 text-white rounded cursor-pointer hover:bg-secondary transition"
         >
           Save
@@ -214,8 +280,7 @@ const userStats = [
           Cancel
         </button>
 
-        <button   onClick={() => setIsDeleteModalOpen(false)}
-          // onClick={handleDeleteUser}
+        <button   onClick={handleDeleteUser}
           className="px-4 py-2 bg-red-600 text-white rounded"
         >
           Delete
@@ -307,7 +372,7 @@ const userStats = [
                   <th className="py-3 px-6 text-left">Email</th>
                   <th className="py-3 px-6 text-left">Role</th>
                   <th className="py-3 px-6 text-left">Joined</th>
-                  {LogedUser?.role === "super admin" && <th className="py-3 px-6 text-center">Action</th>}
+                  {LogedUser?.role === "superadmin" && <th className="py-3 px-6 text-center">Action</th>}
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
@@ -320,7 +385,7 @@ const userStats = [
                       <span className="px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-600">{user.role}</span>
                     </td>
                     <td className="py-3 px-6 text-gray-600"> {user.createdAt ? formatDateCustom(user.createdAt) : "-"}</td>
-                    {LogedUser?.role === "super admin" && (
+                    {LogedUser?.role === "superadmin" && (
                       <td className="py-3 px-6 text-center">
                         <div className="flex items-center justify-center gap-3">
                           <button
@@ -347,7 +412,7 @@ const userStats = [
         </div>
 
         {/* ====================== ALL SUPER ADMINS ====================== */}
-        {LogedUser?.role === "super admin" && (
+        {LogedUser?.role === "superadmin" && (
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between">
               <h2 className="text-xl font-semibold text-primary">All Super Admin</h2>

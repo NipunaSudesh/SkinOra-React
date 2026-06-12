@@ -37,7 +37,7 @@ import { getUserFromToken } from "../../utils/auth";
                 {item.label}
               </Link>
             ))}
-            {user?.role === "admin" || user?.role === "super admin" && (
+            {user?.role === "admin" || user?.role === "superadmin" && (
                          <Link
               to="/admin/dashboard"
               className="text-white hover:text-secondary transition"
