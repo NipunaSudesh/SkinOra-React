@@ -1,7 +1,6 @@
 import React from 'react'
 import AdminLayout from './AdminLayout'
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from 'react'
 import { Menu } from "lucide-react";
 export const CategoriesManagement = () => {
   const [open, setOpen] = useState(false);
