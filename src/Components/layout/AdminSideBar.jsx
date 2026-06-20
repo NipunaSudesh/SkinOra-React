@@ -15,7 +15,7 @@ const menuItems = [
   { name: "Users Management", path: "/admin/users-management", icon: FaUsers, color: "#16a34a" },
   { name: "Products Management", path: "/admin/products-management", icon: FaBoxOpen, color: "#9333ea" },
   { name: "Orders Management", path: "/admin/orders-management", icon: FaShoppingCart, color: "#dc2626" },
-  { name: "Categories Management", path: "/admin/categories-management", icon: FaThList, color: "#d97706" },
+  // { name: "Categories Management", path: "/admin/categories-management", icon: FaThList, color: "#d97706" },
 ];
 
 const AdminSidebar = ({ open, setOpen }) => {
