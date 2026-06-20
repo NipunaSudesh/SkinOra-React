@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import {  X } from "lucide-react";
 import { getUserFromToken } from "../../utils/auth";
 import {
   FaTachometerAlt,
   FaUsers,
   FaBoxOpen,
   FaShoppingCart,
-  FaThList,
 } from "react-icons/fa";
 
 const menuItems = [
