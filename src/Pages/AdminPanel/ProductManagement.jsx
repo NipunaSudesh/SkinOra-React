@@ -23,7 +23,58 @@ const [selectedUser, setSelectedUser] = useState(null);
   const itemsPerPage = 15;
 
   const API_URL = process.env.REACT_APP_SKINORA_API_URL;
+  const [isAddOpen, setIsAddOpen] = useState(false);
 
+  const [file, setFile] = useState(null);
+
+  const [newProduct, setNewProduct] = useState({
+    name: "",
+    brand: "",
+    price: "",
+    shortDescription: "",
+    longDescription: {
+      overview: "",
+      howToUse: "",
+      keyUses: [],
+      keyIngredients: [],
+    },
+    tags: [],
+  });
+
+  // ---------------- CREATE PRODUCT ----------------
+  const handleCreateProduct = async () => {
+    const formData = new FormData();
+
+    formData.append("name", newProduct.name);
+    formData.append("brand", newProduct.brand);
+    formData.append("price", newProduct.price);
+    formData.append("shortDescription", newProduct.shortDescription);
+
+    formData.append(
+      "longDescription",
+      JSON.stringify(newProduct.longDescription)
+    );
+
+    formData.append("tags", JSON.stringify(newProduct.tags));
+
+    if (file) {
+      formData.append("image", file);
+    }
+
+    try {
+      const res = await fetch("http://localhost:5000/api/products", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+      console.log("Created:", data);
+
+      setIsAddOpen(false);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   // ================= FETCH PRODUCTS =================
   const fetchProducts = async () => {
     try {
@@ -138,10 +189,15 @@ const userStats = [
 
       {/* HEADER */}
   
-              <div>
+<div className="flex justify-between">
+                <div>
           <h1 className="text-2xl font-bold text-primary">Product Management</h1>
           <p className="text-sm text-gray-500">Manage product, Catageries and permissions</p>
         </div>
+        <div>
+          <button onClick={() => setIsAddOpen(true)} className="bg-primary text-white p-4 rounded-xl shadow hover:-translate-y-1 font-semibold hover:bg-secondary"> Add product</button>
+        </div>
+</div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {userStats.map((stat, index) => (
@@ -496,7 +552,149 @@ const userStats = [
           </div>
         </div>
       )}
+      {isAddOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-xl w-[500px] max-h-[90vh] overflow-y-auto shadow-lg">
 
+            <h2 className="text-lg font-semibold mb-4 text-primary">
+              Add Product
+            </h2>
+
+            {/* NAME */}
+            <input
+              className="w-full border p-2 rounded mb-3"
+              placeholder="Product Name"
+              value={newProduct.name}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, name: e.target.value })
+              }
+            />
+
+            {/* BRAND */}
+            <input
+              className="w-full border p-2 rounded mb-3"
+              placeholder="Brand"
+              value={newProduct.brand}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, brand: e.target.value })
+              }
+            />
+
+            {/* PRICE */}
+            <input
+              type="number"
+              className="w-full border p-2 rounded mb-3"
+              placeholder="Price"
+              value={newProduct.price}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, price: e.target.value })
+              }
+            />
+
+            {/* SHORT DESCRIPTION */}
+            <textarea
+              className="w-full border p-2 rounded mb-3"
+              placeholder="Short Description"
+              value={newProduct.shortDescription}
+              onChange={(e) =>
+                setNewProduct({
+                  ...newProduct,
+                  shortDescription: e.target.value,
+                })
+              }
+            />
+
+            {/* OVERVIEW */}
+            <textarea
+              className="w-full border p-2 rounded mb-3"
+              placeholder="Overview"
+              value={newProduct.longDescription.overview}
+              onChange={(e) =>
+                setNewProduct({
+                  ...newProduct,
+                  longDescription: {
+                    ...newProduct.longDescription,
+                    overview: e.target.value,
+                  },
+                })
+              }
+            />
+
+            {/* HOW TO USE */}
+            <textarea
+              className="w-full border p-2 rounded mb-3"
+              placeholder="How to use"
+              value={newProduct.longDescription.howToUse}
+              onChange={(e) =>
+                setNewProduct({
+                  ...newProduct,
+                  longDescription: {
+                    ...newProduct.longDescription,
+                    howToUse: e.target.value,
+                  },
+                })
+              }
+            />
+
+            {/* KEY USES */}
+            <input
+              className="w-full border p-2 rounded mb-3"
+              placeholder="Key Uses (comma separated)"
+              onChange={(e) =>
+                setNewProduct({
+                  ...newProduct,
+                  longDescription: {
+                    ...newProduct.longDescription,
+                    keyUses: e.target.value.split(",").map((i) => i.trim()),
+                  },
+                })
+              }
+            />
+
+            {/* KEY INGREDIENTS */}
+            <input
+              className="w-full border p-2 rounded mb-3"
+              placeholder="Key Ingredients (comma separated)"
+              onChange={(e) =>
+                setNewProduct({
+                  ...newProduct,
+                  longDescription: {
+                    ...newProduct.longDescription,
+                    keyIngredients: e.target.value
+                      .split(",")
+                      .map((i) => i.trim()),
+                  },
+                })
+              }
+            />
+
+            {/* IMAGE */}
+            <input
+              type="file"
+              className="w-full border p-2 rounded mb-3"
+              onChange={(e) => setFile(e.target.files[0])}
+            />
+
+            {/* BUTTONS */}
+            <div className="flex justify-end gap-2 mt-4">
+              <button
+                onClick={() => setIsAddOpen(false)}
+                className="px-4 py-2 bg-gray-300 rounded"
+              >
+                Cancel
+              </button>
+
+              <button
+                onClick={handleCreateProduct}
+                className="px-4 py-2 bg-primary text-white rounded"
+              >
+                Save
+              </button>
+            </div>
+
+          </div>
+        </div>
+      )}
     </div>
     </AdminLayout>
   );
